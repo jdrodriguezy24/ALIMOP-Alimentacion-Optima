@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el footer esté al final de la página */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #66BB6A; /* Color de fondo del nav */
+    padding: 10px 20px;
+    position: relative;
+}
+
+.logo h1 {
+    margin: 0;
+    color: white;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 2px 0;
+}
+
+#search {
+    padding: 5px;
+    margin-left: 20px;
+}
+
+#searchButton {
+    padding: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.user-info {
+    color: white;
+}
+
+main {
+    flex: 1; /* Permite que el main ocupe el espacio restante */
+    padding: 20px;
+    background-color: #f4f4f4; /* Color de fondo del main */
+}
+
+footer {
+    background-color: #333; /* Color del footer */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Asegúrate de que el footer esté al final */
+}

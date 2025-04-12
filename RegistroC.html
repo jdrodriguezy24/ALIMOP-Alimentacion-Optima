@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro/Cliente</title>
+    <link rel="stylesheet" href="CSS/RegistroC.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-form">
+            <form class="Ingreso" id="Ingreso">
+                <h2>Ingresa</h2>
+                <span>Use el correo y contraseña regiatrada</span>
+                <div class="container-input">
+                    <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+                </div>
+                <div class="container-input">
+                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                </div>
+                <a href="#">¿Olvidate tu contraseña?</a>
+                <button type="submit" class="boton">Inciciar secion</button>
+                <div class="Social">Iconos</div>
+            </form>
+        </div>
+
+        <div class="container-form">
+            <form class="Registro" id="Registro">
+                <h2>Registrate</h2>
+                <span>Usa el correo y contraseña para registrarte</span>
+                <div class="container-input">
+                    <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+                </div>
+                <div class="container-input">
+                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                </div>
+                <div class="container-input">
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma tu contraseña" required>
+                </div>
+                <button type="submit" class="boton">Registrarse</button>
+                <div class="Social">Iconos</div>
+            </form>
+        </div>
+
+        <div class="container-welcome">
+            <div class="Bienvenido-Registro welcome">
+                <h3>Binenvenido</h3>
+                <p>Ingrese sus datos para el registro</p>
+                <button class="boton" id="btn-registro"> Registrarse</button>
+            </div>
+            <div class="Bienvenido-Ingreso welcome">
+                <h3>Hola!</h3>
+                <p>Ingrese sus datos para el Ingreso</p>
+                <button class="boton" id="btn-ingreso">Iniciar Secion</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--DOCTYPE html--
+    <section class="formulario">
+        <h4>Registro/Cliente</h4>
+        <label class="texto" for="correo">Correo Electronico</label>
+        <input class="controls" type="email"id="correo" name="correo" placeholder="Ingrese su correo" required>
+
+        <label class="texto" for="correo">Contraseña</label>
+        <input class="controls" type="password" id="contraseña" name=" contraseña" placeholder="Ingrese su contraseña" required>
+
+        <p>Estoy de adcuerdo con <a href="#">Terminos y Condiciones</a></p>
+        <input class="boton" type="submit" value="Registrar">
+        <p>¿Ya tienes cuenta? <a href="Principal.html">Inicia Sesion</a></p>
+        
+        <p>Como quieres registrarte</p>
+        <p>Como Proveedor: <a href="RegistroP.html">Registrate</a></p>
+        <p>Como Distribuidor: <a href="RegistroD.html">Registrate</a></p>
+    </section>
+-->
+    <script src="JS/RegistroC.js"></script>
+</body>
+</html>
