@@ -45,20 +45,60 @@ body{
     margin-bottom: 20px;
 }
 
+.divider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 20px;
+    height: 2px;
+    background-color: #C9CCCB;
+    position: relative;
+}
+
+.divider::before,
+.divider::after{
+    content: '';
+    position: absolute;
+    width: 70px; 
+    height: 2px;
+    background-color: #C9CCCB;
+    right: 10px;
+    top: -5px;
+}
+
+.divider::before{
+    left: 10px;
+    top: -5px;
+}
+
+.divider span{
+    background-color: white;
+    padding: 0 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+    position: absolute;
+    top: -10px;
+}
+
 .social{
     display: flex;
     gap: 12px;
     margin-bottom: 25px;
 }
 
-/*
-.social {
-    border: 1px solid #C9CCCB
-    border-radius: 6px;
+.bi{
+    border: 1px solid #C9CCCB;
+    font-size: 30px;
     padding: 8px;
+    border-radius: 6px;
     cursor: pointer;
 }
-*/
+
+.bi:hover{
+    background-color: #4f71ab;
+    color: white;
+}
 
 .container-form span{
     font-size: 12px;
@@ -146,7 +186,7 @@ body{
     gap: 20px;
     padding: 0 70px;
     color: white;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.7s ease-in-out;
 }
 
 .Bienvenido-Ingreso{
