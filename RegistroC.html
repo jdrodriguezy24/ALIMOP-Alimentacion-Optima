@@ -3,77 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro/Cliente</title>
-    <link rel="stylesheet" href="CSS/RegistroC.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Registro - ALIMOP</title>
+
+    <link rel="stylesheet" href="CSS/registro.css">
 </head>
 <body>
-    <div class="container">
-        <div class="container-form">
-            <form class="Ingreso" id="Ingreso">
-                <h2>Ingresa</h2>
-                <span>Use el correo y contraseña regiatrada</span>
-                <div class="container-input">
-                    <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
-                </div>
-                <div class="container-input">
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
-                </div>
-                <a href="#">¿Olvidate tu contraseña?</a>
-                <button type="submit" class="boton">Inciciar secion</button>
-                
-                <div class="divider">
-                    <span>O</span>
-                </div>
-
-                <div class="Social">
-                    <i class="bi bi-google"></i>
-                    <i class="bi bi-microsoft"></i>
-                    <i class="bi bi-apple"></i>
-                </div>
-            </form>
-        </div>
-
-        <div class="container-form">
-            <form class="Registro" id="Registro">
+    <header>
+            <h1>Registro de Usuario</h1>
+    </header>
+    <main>
+         <section class="form-container">
+            <form class="registro-form">
                 <h2>Registrate</h2>
-                <span>Usa el correo y contraseña para registrarte</span>
-                <div class="container-input">
-                    <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+                <span class="form-description">Usa un correo y contraseña para registrarte</span>
+                <div class="form-group">
+                    <input type="text" id="Regnombre" name="Regnombre" placeholder="Ingresa un nombre de usuario" required>
                 </div>
-                <div class="container-input">
-                    <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                <div class="form-group">
+                    <input type="email" id="Regemail" name="Regemail" placeholder="Ingrese su correo" required>
                 </div>
-                <div class="container-input">
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirma tu contraseña" required>
+                <div class="form-group">
+                    <input type="password" id="Regpassword" name="Regpassword" placeholder="Ingrese su contraseña" required>
                 </div>
-                <button type="submit" class="boton">Registrarse</button>
-
-                <div class="divider">
-                    <span>O</span>
-                </div>
-            
-                <div class="Social">
-                    <i class="bi bi-google"></i>
-                    <i class="bi bi-microsoft"></i>
-                    <i class="bi bi-apple"></i>
-                </div>
+                <button type="submit" class="btn-registro">Registrarse</button>
+                <p class="login-link">¿Ya tienes una cuenta? <a href="/loginC.html">Inicia sesión aquí</a></p>
             </form>
-        </div>
-
-        <div class="container-welcome">
-            <div class="Bienvenido-Registro welcome">
-                <h3>Binenvenido</h3>
-                <p>Ingrese sus datos para el registro</p>
-                <button class="boton" id="btn-registro"> Registrarse</button>
-            </div>
-            <div class="Bienvenido-Ingreso welcome">
-                <h3>Hola!</h3>
-                <p>Ingrese sus datos para el Ingreso</p>
-                <button class="boton" id="btn-ingreso">Iniciar Sesión</button>
-            </div>
-        </div>
-    </div>
-    <script src="JS/RegistroC.js"></script>
+         </section>
+    </main>
+    <footer>
+        <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
+        <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
