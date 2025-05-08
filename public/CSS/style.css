@@ -1,0 +1,359 @@
+/*Tipo de fuente de texto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+/*Tamaño imagenes */
+img{
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Contenedor */
+.contenedor{
+    background-color: white;
+    padding-bottom: 40px;
+}
+
+/* Header - Encabezado menu*/
+.header {
+    height: 120px;
+    position: fixed;
+    top: 0; 
+    padding-top: 10px;
+    width: 100%;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    /* Estilo visual */
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    border-width: 2px;
+    background-color: white;
+    z-index: 1000;
+}
+
+/*lodo del menu*/
+.menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30px;
+    height: auto;
+}
+.menu, .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+@media (min-width: 768px) {
+    .menu{display: nome;}
+}
+
+/* Boton el icono menu*/
+.menu:hover{
+    cursor: pointer;
+}
+
+/* Despliegue del menu*/
+.menu-desplegable {
+    position: absolute;
+    top: 120px; /* debajo del header */
+    left: 0;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: none; /* oculto por defecto */
+    z-index: 999;
+}
+
+
+/* Opciones en el encabezado */
+.navegacion{
+    display: none;
+}
+@media(min-width: 768px){
+    .menu{
+        display: flex;
+    }
+}
+
+/* Opciones del boton lupa de busqueda */
+.busqueda {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.input-busqueda {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.btn-busqueda {
+    padding: 5px 10px;
+    background-color: #005ea8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Navegacion */
+.navegacion{
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    list-style: none;
+}
+
+@media (min-width:768px){
+    .navegacion{
+        gap: 30px;
+    }
+}
+
+@media (min-width:992px){
+    .navegacion{
+        gap: 50px;
+    }
+}
+
+.navegacion a{
+    text-decoration: none;
+    color: rgb(97, 97, 97);
+    font-weight: 400;
+    font-size: 15px;
+}
+
+/* Navegacion - cambien de color boton ingreso*/
+.navegacion a:hover{
+    color: black;
+}
+
+/* Navegacion - Boton de ingreso*/
+.navegacion li:nth-last-child(1),
+.navegacion li:nth-last-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 700;
+}
+
+.navegacion li:nth-last-child(1) a,
+.navegacion li:nth-last-child(2) a {
+    background-color: orange;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid orange;
+}
+
+.navegacion li:nth-last-child(1) a:hover,
+.navegacion li:nth-last-child(2) a:hover {
+    background-color: white;
+    color: orange;
+}
+
+/* Estilos para el menú desplegable de usuario */
+.usuario-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.usuario-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: orange;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid orange;
+    cursor: pointer;
+}
+
+.usuario-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 8px 0;
+    z-index: 1000;
+    list-style: none;
+}
+
+.usuario-menu.active {
+    display: block;
+}
+
+.usuario-menu li a {
+    color: #333;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.usuario-menu li a:hover {
+    background-color: #f0f0f0;
+    color: orange;
+}
+
+/* Mensaje - ¡ayudenes a reducir la persida de alimentos!*/
+.mensaje-azul {
+    margin-top: 130px; 
+    background-color: #005ea8;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+}
+
+/* Titulo de las Super Promociones*/
+.Promociones {
+    padding: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.TituloPromociones {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Estilo del contenedor */
+.contenedor-promociones {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 10 50px;
+    box-sizing: border-box;
+}
+
+/* Asegura que cada div con la imagen ocupe el mismo ancho */
+.contenedor-promociones > div {
+    flex: 1 1 30%;
+}
+
+/* Ajusta el tamaño de la imagen */
+.contenedor-promociones img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .contenedor-promociones {
+        flex-direction: column;
+    }
+
+    .contenedor-promociones > div {
+        width: 100%;
+    }
+}
+
+
+/* Franjas azules que separan cada seccion*/
+.separador-azul {
+    background-color: #005ea8;
+    height: 10px;
+    margin: 20px 0;
+}
+
+/* Titulo Productos recomendados*/
+.recomendados{
+    padding: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.RecomendadosImg{
+    max-width: 98%;   
+    height: auto;    
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px rgba(36, 35, 35, 0.1); 
+}
+
+/* Titulo ¿Necesitas algo?*/
+.TituloIconos{
+    padding: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+/* Estilos sección iconos */
+.iconos {
+    padding: 20px; 
+    text-align: center; 
+}
+
+.TituloIconos {
+    margin-bottom: 20px; 
+}
+
+/* Contenedor para los iconos */
+.iconos > div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.iconos img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.iconos p {
+    font-size: 1em; 
+    margin: 0; 
+}
+
+
+/* Estilos para el pie de página */
+.Final {
+    background-color: #005ea8; 
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.FinalPagina {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.piePagina {
+    font-size: 16px;
+    margin: 0;
+}
