@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #005ea8;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.volver-inicio {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.volver-inicio:hover {
+    background-color: white;
+    color: #005ea8;
+}
+
+.contenedor {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.perfil-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imagen-perfil {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.imagen-perfil img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid #005ea8;
+    padding: 5px;
+}
+
+.perfil-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-grupo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.form-grupo label {
+    width: 140px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-grupo input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-grupo input:disabled {
+    background-color: #f9f9f9;
+    color: #666;
+}
+
+.btn-editar {
+    padding: 5px 15px;
+    background-color: transparent;
+    border: 1px solid #005ea8;
+    color: #005ea8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-editar:hover {
+    background-color: #005ea8;
+    color: white;
+}
+
+.botones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn-guardar {
+    width: 200px;
+    padding: 10px 30px;
+    background-color: #005ea8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-guardar:hover {
+    background-color: #004885;
+}
+
+.form-eliminar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.eliminar-cuenta {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+.advertencia {
+    color: #dc3545;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.Final {
+    background-color: #005ea8;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.FinalPagina {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.piePagina {
+    font-size: 14px;
+}
+
+/* mensajes dinamicos */
+.mensaje {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.mensaje.exito {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.mensaje.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 600px) {
+    .form-grupo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .form-grupo label {
+        width: 100%;
+    }
+
+    .btn-editar {
+        align-self: flex-end;
+    }
+}
