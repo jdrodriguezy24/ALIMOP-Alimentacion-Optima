@@ -11,7 +11,7 @@
     <header class="header">
         <h1>Mi Perfil</h1>
         <nav>
-            <a href="/index" class="volver-inicio">Volver al Inicio</a>
+            <a href="/inicio/<%= usuario.idCliente %>" class="volver-inicio">Volver al Inicio</a>
         </nav>
     </header>
     
@@ -19,7 +19,7 @@
         
         <section class="perfil-container">
             <div class="imagen-perfil">
-                <img src="../img/IconosMenu/cuenta.png" alt="Foto de perfil">
+                <img src="/img/IconosMenu/cuenta.png" alt="Foto de perfil">
             </div>
             <% if (mensaje) { %>
                 <div class="mensaje"><%= mensaje %></div>
@@ -54,7 +54,7 @@
                 </div>
             </form>
 
-            <!-- Separar el formulario de eliminación -->
+            
             <div class="eliminar-cuenta">
                 <button onclick="confirmarEliminacion()" class="btn-eliminar">Eliminar Cuenta</button>
             </div>

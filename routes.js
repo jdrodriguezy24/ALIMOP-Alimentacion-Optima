@@ -54,7 +54,6 @@ router.post('/loginC', async (req, res) => {
     try {
         const { Logemail, Logpassword } = req.body;
 
-        // Modificamos la consulta para incluir idCliente
         const [usuarios] = await pool.query(
             'SELECT idCliente, nombreUsuario, Correo FROM cliente WHERE Correo = ? AND contrasenia = ?',
             [Logemail, Logpassword]
@@ -67,14 +66,14 @@ router.post('/loginC', async (req, res) => {
             
             // Guardamos el ID correcto en la sesión
             req.session.user = {
-                id: usuario.idCliente, // Cambiado de id a idCliente
+                id: usuario.idCliente,
                 nombreUsuario: usuario.nombreUsuario,
                 correo: usuario.Correo
             };
 
             console.log('Sesión guardada:', req.session.user); // Debug
             
-            // Aseguramos que la redirección use el ID correcto
+            // Se asegura que la redirección use el ID correcto
             return res.redirect(`/inicio/${usuario.idCliente}`);
         }
 
@@ -93,7 +92,7 @@ router.post('/logout', (req, res) => {
             console.error('Error al cerrar sesión:', error);
             return res.status(500).json({ message: 'Error interno del servidor al cerrar sesión' });
         }
-        res.redirect('/index');
+        res.redirect('/');
     });
 });
 
@@ -213,7 +212,7 @@ router.get('/perfil/:id/eliminar', verificarAutenticacion, async (req, res) => {
         const { id } = req.params;
         console.log('Intentando eliminar usuario con ID:', id); // Debug
 
-        // Verificar que el usuario existe antes de eliminar
+        // Se Verifica que el usuario existe antes de ser eliminado
         const [usuarios] = await pool.query('SELECT idCliente FROM cliente WHERE idCliente = ?', [id]);
         
         if (!usuarios.length) {
@@ -233,15 +232,30 @@ router.get('/perfil/:id/eliminar', verificarAutenticacion, async (req, res) => {
         // Si se eliminó correctamente, destruir la sesión
         req.session.destroy((err) => {
             if (err) {
-                console.error('Error al cerrar la sesión:', err); // Corregido error de sintaxis
+                console.error('Error al cerrar la sesión:', err); 
                 return res.redirect(`/perfil/${id}?mensaje=Error al cerrar sesión`);
             }
-            return res.redirect('/loginC'); // Agregado return
+            return res.redirect('/loginC');
         });
         
     } catch (error) {
         console.error('Error al eliminar la cuenta:', error);
         return res.redirect(`/perfil/${id}?mensaje=Error al eliminar la cuenta: ${error.message}`);
+    }
+});
+
+// Ruta para listaEmpresas::::::::::::::::::::::::::::::::::::::::::::::::::::::
+router.get('/listaEmpresas', async (req, res) => {
+    try {
+        const SesionActiva = req.session && req.session.user;
+
+        res.render('listaEmpresas', {
+            user: SesionActiva ? req.session.user : null,
+            SesionActiva: SesionActiva
+        });
+    } catch (error) {
+        console.error('Error al cargar lista de empresas:', error);
+        res.status(500).send('Error al cargar la página');
     }
 });
 

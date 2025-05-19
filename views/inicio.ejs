@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - ALIMOP</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/normalize.css">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="stylesheet" href="/CSS/normalize.css">
 
 </head>
 <body>
@@ -19,16 +19,16 @@
             <!-- Contenedor para menu-->
             <div class="menu-logo">
 
-                 <!-- Menu -->
+                <!-- Menu -->
                 <div class="menu" id="btnMenu">
-                <img src="../img/IconosMenu/menu.png" alt="menu">
-                <p>Menú</p>
+                    <img src="/img/IconosMenu/menu.png" alt="menu">
+                    <p>Menú</p>
                 </div>
 
-                 <!-- Logo -->
+                <!-- Logo -->
                 <div class="logo">
-                <img src="../img/Logo/logo.jpg" alt="logo">
-                <p>ALIMOP</p>
+                    <img src="/img/Logo/logo.jpg" alt="logo">
+                    <p>ALIMOP</p>
                 </div>
 
             </div>
@@ -62,10 +62,10 @@
                     <li><a href="#">Notificaciones</a></li>
                     <li><a href="#">Carrito</a></li>
                     <li class="usuario-dropdown">
-                        <a href="#" class="usuario-btn">Usuario ▼</a>
+                        <a href="#" class="usuario-btn">Usuario: <%= user.nombreUsuario %> ▼</a>
                         <ul class="usuario-menu">
                             <li><a href="/perfil/<%= user.id %>" class="btn-perfil">Mi Perfil</a></li>
-                            <form action="/logout" method="post">
+                            <form action="/logout" method="POST">
                                 <li><button type="submit">Cerrar Sesión</button></li>
                             </form>
 
@@ -92,13 +92,13 @@
             
             <div class="contenedor-promociones">
                 <div class="Promocion1">
-                    <img src="../img/Promociones/Promocion1.JPG" alt="Promocion1">
+                    <img src="/img/Promociones/Promocion1.JPG" alt="Promocion1">
                 </div>
                 <div class="Promocion2">
-                    <img src="../img/Promociones/Promocion2.JPG" alt="Promocion2">
+                    <img src="/img/Promociones/Promocion2.JPG" alt="Promocion2">
                 </div>
                 <div class="Promocion3">
-                    <img src="../img/Promociones/Promocion3.JPG" alt="Promocion3">
+                    <img src="/img/Promociones/Promocion3.JPG" alt="Promocion3">
                 </div>
             </div>
         </section>
@@ -112,7 +112,7 @@
             <h2 class="TituloRecomendados">Productos recomendados</h2>
             
             <div class="RecomendadosImg">
-            <img src="../img/Recomendados/todos1.jpg" alt="Recomendados">
+            <img src="/img/Recomendados/todos1.jpg" alt="Recomendados">
             </div>
             
         </article>
@@ -127,28 +127,29 @@
             <h2 class="TituloIconos">¿Necesitas algo?</h2>
             
             <div class="IconoFrutas">
-                <img src="../img/IconosBase/frutas2.JPG" alt="IconoFrutas">
+                <img src="/img/IconosBase/frutas2.JPG" alt="IconoFrutas" class="img-default">
             </div>
             <div class="IconoFrutas">
-                <img src="../img/IconosBase/Verduras2.JPG" alt="IconoVerduras">
+                <img src="/img/IconosBase/Verduras2.JPG" alt="IconoVerduras" class="img-default">
             </div>
             <div class="IconoCarnes">
-                <img src="../img/IconosBase/carnicerias1.JPG" alt="IconoCarnes">
+                <img src="/img/IconosBase/carnicerias1.JPG" alt="IconoCarnes" class="img-default">
             </div>
             <div class="IconoLacteos">
-                <img src="../img/IconosBase/Lacteos1.JPG" alt="IconoLacteos">
+                <img src="/img/IconosBase/Lacteos1.JPG" alt="IconoLacteos" class="img-default">
             </div>
             <div class="IconoHamburguesa">
-                <img src="../img/IconosBase/hamburguesa.JPG" alt="IconoHamburguesa">
+                <img src="/img/IconosBase/hamburguesa.JPG" alt="IconoHamburguesa" class="img-default">
             </div>
             <div class="IconoPanaderia">
-                <img src="../img/IconosBase/Panaderia1.JPG" alt="IconoPanaderia">
+                <img src="/img/IconosBase/Panaderia1.JPG" alt="IconoPanaderia" class="img-default">
             </div>
             <div class="IconoRestaurantes">
-                <img src="../img/IconosBase/Restaurantes1.JPG" alt="IconoRestaurantes">
+                <a href="/listaEmpresas">
+                    <img src="/img/IconosBase/Restaurantes1.JPG" alt="IconoRestaurantes" class="img-default">
             </div>
             <div class="IconoTiendas">
-                <img src="../img/IconosBase/Tienda2.JPG" alt="IconoTiendas">
+                <img src="/img/IconosBase/Tienda2.JPG" alt="IconoTiendas" class="img-default">
             </div>
         </aside>
 
@@ -162,6 +163,6 @@
 
 
     <!--Para la opciones del menu-->
-    <script src="../JS/Principal.js"></script>
+    <script src="/JS/Principal.js"></script>
 </body>
 </html>
