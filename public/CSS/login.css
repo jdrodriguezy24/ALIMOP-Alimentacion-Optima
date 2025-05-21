@@ -13,12 +13,31 @@ header {
     background-color: #6484dc;
     padding: 20px 0;
     text-align: center;
+    position: relative; /* Añadido para posicionar el botón */
 }
 
 header h1 {
     color: black;
     margin: 0;
     font-size: 2.5rem;
+}
+
+.btn-volver {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #5c6faa;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #3b4a6a;
 }
 
 main {
@@ -126,6 +145,26 @@ main {
     text-decoration: underline;
 }
 
+.error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.success-message {
+    color: #28a745;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+    text-align: center;
+}
+
 footer {
     background-color: #98abdf;
     color: black;
@@ -151,5 +190,12 @@ footer {
 
     .registro-form h2 {
         font-size: 1.5rem;
+    }
+
+    .btn-volver {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+        transform: none;
     }
 }

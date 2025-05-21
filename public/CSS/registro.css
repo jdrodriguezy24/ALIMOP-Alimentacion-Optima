@@ -13,12 +13,31 @@ header {
     background-color: #6484dc;
     padding: 20px 0;
     text-align: center;
+    position: relative; /* Añadido para posicionar el botón */
 }
 
 header h1 {
     color: black;
     margin: 0;
     font-size: 2.5rem;
+}
+
+.btn-volver {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #5c6faa;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #3b4a6a;
 }
 
 main {
@@ -151,6 +170,13 @@ footer {
 
     .registro-form h2 {
         font-size: 1.5rem;
+    }
+
+    .btn-volver {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+        transform: none;
     }
 }
 

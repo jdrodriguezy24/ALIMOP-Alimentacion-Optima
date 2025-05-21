@@ -31,21 +31,24 @@ router.post('/registroC', async (req, res) => {
         if (!Regnombre || !Regemail || !Regpassword) {
             return res.status(400).json({ message: 'Todos los campos son requeridos' });
         }
+
         const clienteNuevo = {
             nombreUsuario: Regnombre,
             Correo: Regemail,
             contrasenia: Regpassword
         };
-        const [result] = await pool.query('INSERT INTO cliente SET ?', [clienteNuevo]);
-        // Verificar si se insertó correctamente
-        if (result.affectedRows === 1) {
-            res.redirect('/loginC');
-        } else {
-            res.status(500).json({ message: 'Error al registrar el usuario' });
-        }
+
+        await pool.query('INSERT INTO cliente SET ?', [clienteNuevo]);
+
+        // Redirigir al login con mensaje de éxito
+        return res.render('loginC', { 
+            error: null,
+            success: 'Registro exitoso. Por favor, inicia sesión.'
+        });
+
     } catch (error) {
-        console.error('Error en el registro:', error);
-        res.status(500).json({ message: 'Error interno del servidor al registrar' });
+        console.error('Error en registro:', error);
+        return res.status(500).json({ message: 'Error al registrar usuario' });
     }
 });
 
