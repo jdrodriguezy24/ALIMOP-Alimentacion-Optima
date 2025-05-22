@@ -13,12 +13,31 @@ header {
     background-color: #6484dc;
     padding: 20px 0;
     text-align: center;
+    position: relative; /* Añadido para posicionar el botón */
 }
 
 header h1 {
     color: black;
     margin: 0;
     font-size: 2.5rem;
+}
+
+.btn-volver {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #5c6faa;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #3b4a6a;
 }
 
 main {
@@ -33,6 +52,9 @@ main {
 .form-container {
     background-color: #f0f0f0ef;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Añadir esta línea */
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -43,6 +65,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 100%; /* Añadir esta línea */
 }
 
 .registro-form h2 {
@@ -126,6 +149,33 @@ main {
     text-decoration: underline;
 }
 
+/* Estilos base para mensajes */
+.mensaje, .error-message, .success-message {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+    box-sizing: border-box;
+    background-color: #fff; /* Añadido color de fondo base */
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Estilos para mensajes de éxito */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
 footer {
     background-color: #98abdf;
     color: black;
@@ -137,6 +187,18 @@ footer {
 .FinalPagina {
     font-size: 1.2rem;
     margin-bottom: 10px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Diseño responsive */
@@ -151,5 +213,12 @@ footer {
 
     .registro-form h2 {
         font-size: 1.5rem;
+    }
+
+    .btn-volver {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+        transform: none;
     }
 }

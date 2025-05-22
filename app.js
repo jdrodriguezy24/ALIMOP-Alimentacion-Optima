@@ -48,7 +48,10 @@ app.use((req, res, next) => {
 
 // Rutas básicas
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        SesionActiva: !!req.session.user,
+        user: req.session.user || null
+    });
 });
 
 // Usar las rutas del archivo routes.js

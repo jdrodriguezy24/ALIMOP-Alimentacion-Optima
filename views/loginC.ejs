@@ -9,16 +9,24 @@
 <body>
     <header>
         <h1>Iniciar Sesión</h1>
+        <a href="/" class="btn-volver"> Volver a Inicio</a>
     </header>
     <main>
         <section class="form-container">
             <form class="registro-form" action="/loginC" method="POST">
                 
                 <% if (typeof error !== 'undefined' && error) { %>
-                    <div class="error-message" style="color: red; margin: 10px 0;">
+                    <div class="error-message" style="color: red; margin: 10px 0; text-align: center;">
                         <%= error %>
                     </div>
                 <% } %>
+                
+                <% if (typeof success !== 'undefined' && success) { %>
+                    <div class="success-message" style="color: green; margin: 10px 0; text-align: center;">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
                 <h2>Bienvenido</h2>
                 <span class="form-description">Ingresa tus credenciales para continuar</span>
                 <div class="form-group">

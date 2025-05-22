@@ -31,21 +31,24 @@ router.post('/registroC', async (req, res) => {
         if (!Regnombre || !Regemail || !Regpassword) {
             return res.status(400).json({ message: 'Todos los campos son requeridos' });
         }
+
         const clienteNuevo = {
             nombreUsuario: Regnombre,
             Correo: Regemail,
             contrasenia: Regpassword
         };
-        const [result] = await pool.query('INSERT INTO cliente SET ?', [clienteNuevo]);
-        // Verificar si se insertó correctamente
-        if (result.affectedRows === 1) {
-            res.redirect('/loginC');
-        } else {
-            res.status(500).json({ message: 'Error al registrar el usuario' });
-        }
+
+        await pool.query('INSERT INTO cliente SET ?', [clienteNuevo]);
+
+        // Redirigir al login con mensaje de éxito
+        return res.render('loginC', { 
+            error: null,
+            success: 'Registro exitoso. Por favor, inicia sesión.'
+        });
+
     } catch (error) {
-        console.error('Error en el registro:', error);
-        res.status(500).json({ message: 'Error interno del servidor al registrar' });
+        console.error('Error en registro:', error);
+        return res.status(500).json({ message: 'Error al registrar usuario' });
     }
 });
 
@@ -54,8 +57,7 @@ router.post('/loginC', async (req, res) => {
     try {
         const { Logemail, Logpassword } = req.body;
 
-        const [usuarios] = await pool.query(
-            'SELECT idCliente, nombreUsuario, Correo FROM cliente WHERE Correo = ? AND contrasenia = ?',
+        const [usuarios] = await pool.query('SELECT idCliente, nombreUsuario, Correo FROM cliente WHERE Correo = ? AND contrasenia = ?',
             [Logemail, Logpassword]
         );
 
@@ -143,16 +145,16 @@ router.get('/perfil/:id', verificarAutenticacion, async (req, res) => {
     try {
         // Obtener el ID del usuario
         const userId = req.params.id;
-        const mensaje = req.params.mensaje || null;
+        const mensaje = req.query.mensaje || null; // Cambiado de req.params a req.query
 
         const[usuarios] = await pool.query('SELECT idCliente, nombreUsuario, Correo, contrasenia FROM cliente WHERE idCliente = ?',
             [userId]
         );
 
-        if(usuarios.length > 0) {
+        if (usuarios.length > 0) {
             res.render('perfil', {
                 usuario: usuarios[0],
-                mensaje
+                mensaje: mensaje // Pasamos el mensaje a la vista
             });
         } else {
             res.redirect('/loginC');
@@ -169,16 +171,16 @@ router.post('/perfil/:id/actualizar', verificarAutenticacion, async (req, res) =
         const { id } = req.params;
         const { nombreUsuario, Correo, contrasenia } = req.body;
 
+        // Validación
         if (!nombreUsuario || !Correo || !contrasenia) {
             return res.render('perfil', {
                 usuario: {...req.body, idCliente: id},
-                mensaje: 'Todos los campos son requeridos'
+                mensaje: 'Error: Todos los campos son requeridos'
             });
-        };
+        }
 
         //Actualizar los usando idCliente en lugar de id
-        const [result] = await pool.query(
-            'UPDATE cliente SET nombreUsuario = ?, Correo = ?, contrasenia = ? WHERE idCliente = ?',
+        const [result] = await pool.query('UPDATE cliente SET nombreUsuario = ?, Correo = ?, contrasenia = ? WHERE idCliente = ?',
             [nombreUsuario, Correo, contrasenia, id]
         );
 
@@ -189,19 +191,21 @@ router.post('/perfil/:id/actualizar', verificarAutenticacion, async (req, res) =
             });
         }
 
-        // Actualizar los datos de la sesión
+        // Actualizar sesión
         req.session.user = {
             id: parseInt(id),
             nombreUsuario,
             correo: Correo
         };
 
-        return res.redirect(`/perfil/${id}?mensaje=Datos actualizados correctamente`);
+        // Redireccionar con mensaje de éxito
+        return res.redirect(`/perfil/${id}?mensaje=¡Datos actualizados correctamente!`);
+
     } catch (error) {
         console.error('Error al actualizar el perfil:', error);
         res.render('perfil', {
             usuario: { ...req.body, idCliente: id },
-            mensaje: 'Error al actualizar el perfil'
+            mensaje: 'Error: No se pudo actualizar el perfil'
         });
     }
 });
