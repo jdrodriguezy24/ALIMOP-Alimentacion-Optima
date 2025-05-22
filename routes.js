@@ -140,7 +140,7 @@ router.get('/inicio/:id', async (req, res) => {
     }
 });
 
-// Actualizar datos::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// Pagina perfil para usuario
 router.get('/perfil/:id', verificarAutenticacion, async (req, res) => {
     try {
         // Obtener el ID del usuario
@@ -166,6 +166,7 @@ router.get('/perfil/:id', verificarAutenticacion, async (req, res) => {
     }
 });
 
+// Actualizar datos::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 router.post('/perfil/:id/actualizar', verificarAutenticacion, async (req, res) => {
     try {
         const { id } = req.params;
