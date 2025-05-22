@@ -21,14 +21,13 @@
             <div class="imagen-perfil">
                 <img src="/img/IconosMenu/cuenta.png" alt="Foto de perfil">
             </div>
-            <% if (mensaje) { %>
-                <div class="mensaje"><%= mensaje %></div>
-            <% } %>
+            
             <% if (mensaje) { %>
                 <div class="mensaje <%= mensaje.includes('Error') ? 'error' : 'exito' %>">
                     <%= mensaje %>
                 </div>
             <% } %>
+            
             <form class="perfil-form" action="/perfil/<%= usuario.idCliente %>/actualizar" method="POST">
                 <div class="form-grupo">
                     <label for="nombreUsuario">Nombre de Usuario</label>
