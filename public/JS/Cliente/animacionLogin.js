@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     });
 
     // Animacion para el boton de login
-    const submitBtn = document.querySelector('.login-btn');
+    const submitBtn = document.querySelector('.btn-registro');
 
     submitBtn.addEventListener('mouseenter', () => {
         gsap.to(submitBtn, {
