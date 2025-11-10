@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALIMOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" type="image/png" href="/img/Logo/Logo.png">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+            <div class="container">
+                <!-- Logo más grande -->
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <img src="/img/Logo/Logo.png" alt="Logo ALIMOP" height="40" class="me-3">
+                    <span class="fs-4">ALIMOP</span>
+                </a>
+
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenido del navbar -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Buscador más grande -->
+                    <form class="d-flex mx-auto">
+                        <input class="form-control me-2" type="search" placeholder="Buscar..." style="min-width: 300px;">
+                        <button class="btn btn-outline-primary" type="submit">🔍</button>
+                    </form>
+
+                    <!-- Menú de navegación más grande -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Notificaciones</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#">Carrito</a></li>
+                        
+                        <!-- Dropdown de registro -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle py-2" href="#" data-bs-toggle="dropdown">
+                                Registro
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="../Cliente/registroCliente">Cliente</a></li>
+                                <li><a class="dropdown-item" href="../Proveedor/registroProveedor">Proveedor</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link py-2" href="../Cliente/loginCliente">Mi cuenta</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner mensaje -->
+        <div class="bg-primary text-white py-2 text-center">
+            <h2 class="h5 mb-0">¡Ayúdanos a reducir la perdida de alimentos!</h2>
+        </div>
+
+        <!-- Promociones -->
+        <section class="container my-5">
+            <h2 class="text-center mb-4">Súper promociones</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <img src="./img/Promociones/Promocion1.JPG" alt="Promocion1" class="img-fluid rounded">
+                </div>
+                <div class="col-md-4">
+                    <img src="./img/Promociones/Promocion2.JPG" alt="Promocion2" class="img-fluid rounded">
+                </div>
+                <div class="col-md-4">
+                    <img src="./img/Promociones/Promocion3.JPG" alt="Promocion3" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+
+        <!-- Separador -->
+        <div class="border-top my-5"></div>
+
+        <!-- Productos recomendados -->
+        <section class="container my-5">
+            <h2 class="text-center mb-4">Productos recomendados</h2>
+            <div class="text-center">
+                <img src="./img/Recomendados/todos1.jpg" alt="Recomendados" class="img-fluid rounded">
+            </div>
+        </section>
+
+        <!-- Separador -->
+        <div class="border-top my-5"></div>
+
+        <!-- Iconos de categorías -->
+        <section class="container my-5">
+            <h2 class="text-center mb-4">¿Necesitas algo?</h2>
+            <div class="row g-4 text-center">
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/frutas2.JPG" alt="IconoFrutas" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/Verduras2.JPG" alt="IconoVerduras" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/carnicerias1.JPG" alt="IconoCarnes" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/Lacteos1.JPG" alt="IconoLacteos" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/hamburguesa.JPG" alt="IconoHambu" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/Panaderia1.JPG" alt="IconoPanaderia" class="img-fluid rounded">
+                </div>
+                <div class="col-6 col-md-3">
+                    <a href="../listaEmpresas">
+                        <img src="./img/IconosBase/Restaurantes1.JPG" alt="IconoRestaurantes" class="img-fluid rounded">
+                    </a>
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="./img/IconosBase/Tienda2.JPG" alt="IconoTiendas" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4 mt-5">
+            <h2 class="h5">TODOS LOS DERECHOS RESERVADOS</h2>
+            <p class="small mb-0">ALIMOP.com S.A.S. NIT 1463718-8. Calle 85 #45-49 Piso 5, Bogotá, Colombia</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS y Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="./JS/Principal.js"></script>
+</body>
+</html>

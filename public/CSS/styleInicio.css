@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.contenedor {
+    background-color: #FFFFFF;
+    padding-bottom: 40px;
+}
+
+@media(max-width: 768px){
+    .contenedor{
+        padding-top: 100px;
+    }
+}
+
+/* Estilos para el menú desplegable de usuario */
+.usuario-dropdown {
+    position: relative;
+}
+
+.usuario-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #FFA500;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    margin-right: 45px;
+    border-radius: 20px;
+    border: 2px solid #FFA500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.usuario-btn:hover{
+    background-color: #FFFFFF;
+    color: #FFA500;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.usuario-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 8px 0;
+    z-index: 1000;
+    list-style: none;
+}
+
+.usuario-menu.active {
+    display: block;
+}
+
+.usuario-menu li a {
+    color: #333333;
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.usuario-menu li a:hover {
+    background-color: #F8F8F8;
+    color: #FFA500;
+    padding-left: 25px;
+}
+
+/*::::::::::::::::::::::::::::::::::::::::::::::::: */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    min-height: 70px;
+}
+
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
+}
+
+.navbar-brand span {
+    font-weight: 500;
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.form-control {
+    height: calc(2em + .75rem + 2px);
+    font-size: 1rem;
+}
+
+.dropdown-menu {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+}
+
+/* Ajustes responsive manteniendo la lógica de usuario */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-height: 35px;
+    }
+
+    .form-control {
+        min-width: 200px !important;
+    }
+
+    .usuario-menu {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/*:::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+/* Asegura que cada div con la imagen ocupe el mismo ancho */
+.contenedor-promociones > div {
+    flex: 1 1 30%;
+}
+
+/* Ajusta el tamaño de la imagen */
+.contenedor-promociones img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+/* Responsive para las recomendaciones */
+@media (max-width: 768px){
+    .recomendados {
+        padding: 10px;
+    }
+    .RecomendadosImg{
+        max-width: 100%;
+        border-radius: 25px;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .contenedor-promociones {
+        flex-direction: column;
+    }
+
+    .contenedor-promociones > div {
+        width: 100%;
+    }
+}
+
+/* Titulo Productos recomendados*/
+.recomendados{
+    padding: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.RecomendadosImg{
+    max-width: 98%;   
+    height: auto;    
+    border-radius: 50px; 
+    box-shadow: 0 4px 8px rgba(36, 35, 35, 0.1); 
+}
+
+/* Titulo ¿Necesitas algo?*/
+.TituloIconos{
+    padding: 20px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+/* Estilos sección iconos */
+.iconos {
+    padding: 20px; 
+    text-align: center; 
+}
+
+.TituloIconos {
+    margin-bottom: 20px; 
+}
+
+/* Contenedor para los iconos */
+.iconos > div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+    padding: 10px;
+}
+
+.iconos img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.iconos p {
+    font-size: 1em; 
+    margin: 0; 
+}
+
+/* Responsive para la seccion de iconos */
+@media (max-width: 768px){
+    .iconos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .iconos > div{
+        margin: 10px;
+    }
+
+    .iconos img{
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px){
+    .iconos{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos para el pie de página */
+.Final {
+    background-color: #005EA8; 
+    color: #FFFFFF;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.FinalPagina {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.piePagina {
+    font-size: 16px;
+    margin: 0;
+}
+
+@media (max-width: 768px){
+    .Final{
+        padding: 20px 10px;
+        margin-top: 20px;
+    }
+
+    .FinalPagina{
+        font-size: 18px;
+    }
+
+    .piePagina{
+        font-size: 14px;
+    }
+}

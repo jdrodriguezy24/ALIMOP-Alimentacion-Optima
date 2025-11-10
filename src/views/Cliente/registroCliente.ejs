@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - ALIMOP</title>
-
-    <link rel="stylesheet" href="./CSS/registro.css">
+    <link rel="stylesheet" href="../CSS/styleCliente/registro.css">
 </head>
 <body>
     <header>
@@ -14,7 +13,7 @@
     </header>
     <main>
         <section class="form-container">
-            <form class="registro-form" action="/registroC" method="post">
+            <form class="registro-form" action="/registroCliente" method="post">
                 <h2>Registrate</h2>
                 <span class="form-description">Usa un correo y contraseña para registrarte</span>
                 <div class="form-group">
@@ -27,7 +26,7 @@
                     <input type="password" id="Regpassword" name="Regpassword" placeholder="Ingrese su contraseña" required>
                 </div>
                 <button type="submit" class="btn-registro">Registrarse</button>
-                <p class="login-link">¿Ya tienes una cuenta? <a href="/loginC">Inicia sesión aquí</a></p>
+                <p class="login-link">¿Ya tienes una cuenta? <a href="../Cliente/loginCliente">Inicia sesión aquí</a></p>
             </form>
         </section>
     </main>
@@ -35,5 +34,7 @@
         <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
         <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../JS/Cliente/animacionRegistro.js"></script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/styleProveedor/loginProveedor.css">
+    <title>Login - ALIMOP</title>
+</head>
+<body>
+    <header>
+        <h1>Iniciar Sesión Proveedor</h1>
+        <a href="/" class="btn-volver"> Volver a Inicio</a>
+    </header>
+    <main>
+        <section class="form-container">
+            <form class="registro-form" action="/loginProveedor" method="post">
+                <h2>Iniciar Sesión</h2>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+                <p class="login-link">¿No tienes una cuenta? <a href="../Proveedor/registroProveedor">Regístrate aquí</a></p>
+                <p class="login-link">¿Olvidaste tu contraseña? <a href="/recuperarContrasena.html">Recuperar contraseña</a></p>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
+        <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

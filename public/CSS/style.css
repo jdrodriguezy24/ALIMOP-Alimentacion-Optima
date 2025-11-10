@@ -1,253 +1,122 @@
-/*Tipo de fuente de texto */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-*{
+* {
     margin: 0;
     border: 0;
     padding: 0;
     font-family: "Roboto", sans-serif;
 }
 
-/*Tamaño imagenes */
-img{
-    width: 100%;
-    object-fit: cover;
-}
-
-/* Contenedor */
-.contenedor{
-    background-color: white;
+.contenedor {
+    background-color: #FFFFFF;
     padding-bottom: 40px;
 }
 
-/* Header - Encabezado menu*/
-.header {
-    height: 120px;
-    position: fixed;
-    top: 0; 
-    padding-top: 10px;
-    width: 100%;
-    margin-inline: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    /* Estilo visual */
-    border-style: solid;
-    border-color: black;
-    border-radius: 20px;
-    border-width: 2px;
-    background-color: white;
-    z-index: 1000;
-}
-
-/*lodo del menu*/
-.menu-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 30px;
-    height: auto;
-}
-.menu, .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-}
-
-@media (min-width: 768px) {
-    .menu{display: nome;}
-}
-
-/* Boton el icono menu*/
-.menu:hover{
-    cursor: pointer;
-}
-
-/* Despliegue del menu*/
-.menu-desplegable {
-    position: absolute;
-    top: 120px; /* debajo del header */
-    left: 0;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: none; /* oculto por defecto */
-    z-index: 999;
-}
-
-
-/* Opciones en el encabezado */
-.navegacion{
-    display: none;
-}
-@media(min-width: 768px){
-    .menu{
-        display: flex;
+@media(max-width: 768px){
+    .contenedor{
+        padding-top: 100px;
     }
 }
 
-/* Opciones del boton lupa de busqueda */
-.busqueda {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 20px;
-}
-
-.input-busqueda {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.btn-busqueda {
-    padding: 5px 10px;
-    background-color: #005ea8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-/* Navegacion */
-.navegacion{
-    display: flex;
-    align-items: center;
-    padding-left: 0;
-    list-style: none;
-}
-
-@media (min-width:768px){
-    .navegacion{
-        gap: 30px;
-    }
-}
-
-@media (min-width:992px){
-    .navegacion{
-        gap: 50px;
-    }
-}
-
-.navegacion a{
-    text-decoration: none;
-    color: rgb(97, 97, 97);
-    font-weight: 400;
-    font-size: 15px;
-}
-
-/* Navegacion - cambien de color boton ingreso*/
-.navegacion a:hover{
-    color: black;
-}
-
-/* Navegacion - Boton de ingreso*/
-.navegacion li:nth-last-child(1),
-.navegacion li:nth-last-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: 700;
-}
-
-.navegacion li:nth-last-child(1) a,
-.navegacion li:nth-last-child(2) a {
-    background-color: orange;
-    color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid orange;
-}
-
-.navegacion li:nth-last-child(1) a:hover,
-.navegacion li:nth-last-child(2) a:hover {
-    background-color: white;
-    color: orange;
-}
-
-/* Estilos para el menú desplegable de usuario */
-.usuario-dropdown {
+/* Menú desplegable de registro adaptado */
+.registro-dropdown {
     position: relative;
-    display: inline-block;
 }
 
-.usuario-btn {
+.registro-btn {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    background-color: orange;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 1px solid orange;
+    background-color: #FFA500;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: 2px solid #FFA500;
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    gap: 5px;
 }
 
-.usuario-menu {
+.registro-btn:hover{
+    background-color: #FFFFFF;
+    color: #FFA500;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.registro-menu {
     display: none;
     position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     padding: 8px 0;
     z-index: 1000;
     list-style: none;
 }
 
-.usuario-menu.active {
+.registro-menu.active {
     display: block;
 }
 
-.usuario-menu li a {
-    color: #333;
+.registro-menu li a{
+    color: #333333;
     padding: 8px 16px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
 }
 
-.usuario-menu li a:hover {
-    background-color: #f0f0f0;
-    color: orange;
+.registro-menu li a:hover{
+    background-color: #F8F8F8;
+    outline: none;
 }
 
-/* Mensaje - ¡ayudenes a reducir la persida de alimentos!*/
-.mensaje-azul {
-    margin-top: 130px; 
-    background-color: #005ea8;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 18px;
+/*::::::::::::::::::::::::::::::::::::::::::::::::: */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    min-height: 70px;
 }
 
-/* Titulo de las Super Promociones*/
-.Promociones {
-    padding: 20px;
-    text-align: left;
-    padding-left: 30px;
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
 }
 
-.TituloPromociones {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+.navbar-brand span {
+    font-weight: 500;
 }
 
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+}
 
-/* Estilo del contenedor */
-.contenedor-promociones {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 50px;
-    padding: 10 50px;
-    box-sizing: border-box;
+.form-control {
+    height: calc(2em + .75rem + 2px);
+    font-size: 1rem;
+}
+
+.dropdown-menu {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-height: 35px;
+    }
+
+    .form-control {
+        min-width: 200px !important;
+    }
 }
 
 /* Asegura que cada div con la imagen ocupe el mismo ancho */
@@ -263,6 +132,17 @@ img{
     border-radius: 8px;
 }
 
+/* Responsive para las recomendaciones */
+@media (max-width: 768px){
+    .recomendados {
+        padding: 10px;
+    }
+    .RecomendadosImg{
+        max-width: 100%;
+        border-radius: 25px;
+    }
+}
+
 /* Responsive para móviles */
 @media (max-width: 768px) {
     .contenedor-promociones {
@@ -272,13 +152,6 @@ img{
     .contenedor-promociones > div {
         width: 100%;
     }
-}
-
-/* Franjas azules que separan cada seccion*/
-.separador-azul {
-    background-color: #005ea8;
-    height: 10px;
-    margin: 20px 0;
 }
 
 /* Titulo Productos recomendados*/
@@ -333,11 +206,34 @@ img{
     margin: 0; 
 }
 
+/* Responsive para la seccion de iconos */
+@media (max-width: 768px){
+    .iconos{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .iconos > div{
+        margin: 10px;
+    }
+
+    .iconos img{
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media (max-width: 576px){
+    .iconos{
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Estilos para el pie de página */
 .Final {
-    background-color: #005ea8; 
-    color: white;
+    background-color: #005EA8; 
+    color: #FFFFFF;
     padding: 30px 20px;
     text-align: center;
     border-radius: 10px;
@@ -355,4 +251,19 @@ img{
 .piePagina {
     font-size: 16px;
     margin: 0;
+}
+
+@media (max-width: 768px){
+    .Final{
+        padding: 20px 10px;
+        margin-top: 20px;
+    }
+
+    .FinalPagina{
+        font-size: 18px;
+    }
+
+    .piePagina{
+        font-size: 14px;
+    }
 }
