@@ -1,0 +1,1 @@
+export const encryptionKey = 'naturalYou5346';

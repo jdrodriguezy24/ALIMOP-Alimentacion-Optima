@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #E0E0E0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+    background-color: #6484DC;
+    padding: 20px 0;
+    text-align: center;
+    position: relative; /* Añadido para posicionar el botón */
+}
+
+header h1 {
+    color: #000000;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.btn-volver {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #5C6FAF;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #3B4A6A;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4162BE;
+    padding: 40px 20px;
+}
+
+.form-container {
+    background-color: #F0F0F0EF;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.registro-form h2 {
+    color: #333333;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+}
+
+.form-description {
+    text-align: center;
+    color: #666666;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #DDDDDD;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4162BE;
+    box-shadow: 0 0 0 3px rgba(65, 98, 190, 0.2);
+}
+
+.form-group input::placeholder {
+    color: #999999;
+}
+
+.btn-registro {
+    background-color: #5C6FAF;
+    color: #FFFFFF;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-registro:hover {
+    background-color: #3B4A6A;
+    transform: translateY(-1px);
+}
+
+.btn-registro:active {
+    transform: translateY(0);
+}
+
+.login-link {
+    text-align: center;
+    margin: 5px 0;
+    color: #666666;
+    font-size: 0.9rem;
+}
+
+.login-link a {
+    color: #4162BE;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #3B4A6A;
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #98ABDF;
+    color: #000000;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
+
+.FinalPagina {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Diseño responsive */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .registro-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-volver {
+        position: static;
+        display: inline-block;
+        margin-top: 10px;
+        transform: none;
+    }
+}
+
+/* Estilos base para mensajes */
+.mensaje, .error-message, .success-message {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Estilos para mensajes de error */
+.mensaje.error, .error-message {
+    background-color: #f8D7DA;
+    color: #721C24;
+    border: 1px solid #f5C6CB;
+}
+
+/* Estilos para mensajes de éxito */
+.mensaje.exito, .success-message {
+    background-color: #d4EDDA;
+    color: #155724;
+    border: 1px solid #c3E6CB;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

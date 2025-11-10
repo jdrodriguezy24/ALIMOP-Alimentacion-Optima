@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ALIMOP</title>
+    <link rel="stylesheet" href="../CSS/styleCliente/login.css">
+</head>
+<body>
+    <header>
+        <h1>Iniciar Sesión</h1>
+        <a href="/" class="btn-volver"> Volver a Inicio</a>
+    </header>
+    <main>
+        <section class="form-container">
+            <form class="registro-form" action="/loginCliente" method="POST">
+                
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="error-message" style="color: red; margin: 10px 0; text-align: center;">
+                        <%= error %>
+                    </div>
+                <% } %>
+                
+                <% if (typeof success !== 'undefined' && success) { %>
+                    <div class="success-message" style="color: green; margin: 10px 0; text-align: center;">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <h2>Bienvenido</h2>
+                <span class="form-description">Ingresa tus credenciales para continuar</span>
+                <div class="form-group">
+                    <input type="email" id="Logemail" name="Logemail" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="Logpassword" name="Logpassword" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn-registro">Iniciar Sesión</button>
+                <p class="login-link">¿No tienes una cuenta? <a href="../Cliente/registroCliente">Regístrate aquí</a></p>
+                <p class="login-link">¿Olvidaste tu contraseña? <a href="#">Recuperar aquí</a></p>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
+        <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
+    </footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="../JS/Cliente/animacionLogin.js"></script>
+</html>

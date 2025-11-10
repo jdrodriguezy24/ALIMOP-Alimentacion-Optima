@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - ALIMOP</title>
+    <link rel="stylesheet" href="../CSS/styleCliente/perfil.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Mi Perfil</h1>
+        <nav>
+            <a href="/inicio/<%= usuario.idCliente %>" class="volver-inicio">Volver al Inicio</a>
+        </nav>
+    </header>
+    
+    <main class="contenedor">
+        <section class="perfil-container">
+            <div class="imagen-perfil">
+                <img src="/img/IconosMenu/cuenta.png" alt="Foto de perfil">
+            </div>
+            
+            <% if (mensaje) { %>
+                <div class="mensaje <%= mensaje.includes('Error') ? 'error' : 'exito' %>">
+                    <%= mensaje %>
+                </div>
+            <% } %>
+            
+            <form class="perfil-form" action="/perfil/<%= usuario.idCliente %>/actualizar" method="POST">
+                <div class="form-grupo">
+                    <label for="nombreUsuario">Nombre de Usuario</label>
+                    <input type="text" id="nombreUsuario" name="nombreUsuario" value="<%= usuario.nombreUsuario %>" readonly required>
+                    <button type="button" onclick="habilitarEdicion(this)" class="btn-editar">Editar</button>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" value="<%= usuario.correo %>" readonly required>
+                    <button type="button" onclick="habilitarEdicion(this)" class="btn-editar">Editar</button>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" name="contrasena" value="<%= usuario.contrasena %>" readonly required>
+                    <button type="button" onclick="habilitarEdicion(this)" class="btn-editar">Editar</button>
+                </div>
+
+                <div class="botones">
+                    <button type="submit" class="btn-guardar">Guardar Cambios</button>
+                    <a href="/inicio/<%= usuario.idCliente %>" class="btn-volver">Cancelar</a>
+                </div>
+            </form>
+            
+            <div class="eliminar-cuenta">
+                <a href="/perfil/<%= usuario.idCliente %>/eliminar" class="btn-eliminar" onclick="return confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.')">
+                Eliminar Cuenta</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="Final">
+        <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
+        <p class="piePagina">ALIMOP.com S.A.S. NIT 1463718-8. Calle 85 #45-49 Piso 5, Bogotá, Colombia</p>
+    </footer>
+
+    <script src="/JS/perfil.js"></script>
+</body>
+</html>

@@ -1,14 +1,23 @@
 // Librerias
 import express from 'express';
 import session from 'express-session';
-import routes from './routes.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import clientesRoutes from './src/routes/Clientes.routes.js'; // Rutas de clientes
+//import proveedoresRoutes from './src/routes/Proveedores.routes.js' // Rutas de proveedores
 
 // Iniciar
 const app = express();
 
+// Rutas 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Configuraciones
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'src/views'));
+
 
 // Middleware
 app.use(express.json());
@@ -54,10 +63,12 @@ app.get('/', (req, res) => {
     });
 });
 
-// Usar las rutas del archivo routes.js
-app.use('/', routes);
+// Uso de las rutas importadas
+app.use('/', clientesRoutes);
+//app.use('/', proveedoresRoutes)
+
 
 // Iniciar servidor
 app.listen(app.get('port'), () => {
-    console.log(`Servidor corriendo en puerto ${app.get('port')}`);
+    console.log(`Servidor corriendo en puerto: ${app.get('port')}`);
 });

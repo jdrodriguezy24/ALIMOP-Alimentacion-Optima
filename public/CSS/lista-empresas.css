@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin: 0;
     border: 0;
@@ -6,214 +5,48 @@
     font-family: "Roboto", sans-serif;
 }
 
-/*Tamaño imagenes */
-img{
-    width: 100%;
-    object-fit: cover;
-}
-
-/* Contenedor */
 .contenedor{
-    background-color: white;
+    background-color: #FFFFFF;
     padding-bottom: 40px;
-}
-
-.header {
-    height: 120px;
-    position: fixed;
-    top: 0; 
-    padding-top: 10px;
-    width: 100%;
-    margin-inline: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    /* Estilo visual */
-    border-style: solid;
-    border-color: black;
-    border-radius: 20px;
-    border-width: 2px;
-    background-color: white;
-    z-index: 1000;
-}
-
-/*lodo del menu*/
-.menu-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 30px;
-    height: auto;
-}
-
-.menu, .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.logo img {
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
-}
-
-.titulo {
-    font-size: 1rem;
-    color: #1d1d1df7;
-    margin: 0;
-    padding: 0;
-}
-
-@media (min-width: 768px) {
-    .menu{display: nome;}
-}
-
-/* Boton el icono menu*/
-.menu:hover{
-    cursor: pointer;
-}
-
-/* Despliegue del menu*/
-.menu-desplegable {
-    position: absolute;
-    top: 120px; /* debajo del header */
-    left: 0;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    display: none; /* oculto por defecto */
-    z-index: 999;
-}
-
-
-/* Opciones en el encabezado */
-.navegacion{
-    display: none;
-}
-@media(min-width: 768px){
-    .menu{
-        display: flex;
-    }
-}
-
-/* Opciones del boton lupa de busqueda */
-.busqueda {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 20px;
-}
-
-.input-busqueda {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.btn-busqueda {
-    padding: 5px 10px;
-    background-color: #005ea8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-
-/* Navegacion */
-.navegacion{
-    display: flex;
-    align-items: center;
-    padding-left: 0;
-    list-style: none;
-}
-
-@media (min-width:768px){
-    .navegacion{
-        gap: 30px;
-    }
-}
-
-@media (min-width:992px){
-    .navegacion{
-        gap: 50px;
-    }
-}
-
-.navegacion a{
-    text-decoration: none;
-    color: rgb(97, 97, 97);
-    font-weight: 400;
-    font-size: 15px;
-}
-
-/* Navegacion - cambien de color boton ingreso*/
-.navegacion a:hover{
-    color: black;
-}
-
-/* Navegacion - Boton de ingreso*/
-.navegacion li:nth-last-child(1),
-.navegacion li:nth-last-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-weight: 700;
-}
-
-.navegacion li:nth-last-child(1) a,
-.navegacion li:nth-last-child(2) a {
-    background-color: orange;
-    color: white;
-    padding: 5px;
-    border-radius: 10px;
-    border: 1px solid orange;
-}
-
-.navegacion li:nth-last-child(1) a:hover,
-.navegacion li:nth-last-child(2) a:hover {
-    background-color: white;
-    color: orange;
 }
 
 /* Estilos para el menú desplegable de usuario */
 .usuario-dropdown {
     position: relative;
-    display: inline-block;
 }
 
 .usuario-btn {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background-color: orange;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 1px solid orange;
+    background-color: #FFA500;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    margin-right: 45px;
+    border-radius: 20px;
+    border: 2px solid #FFA500;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.usuario-btn:hover{
+    background-color: #FFFFFF;
+    color: #FFA500;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .usuario-menu {
     display: none;
     position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     padding: 8px 0;
     z-index: 1000;
-    list-style: none;
 }
 
 .usuario-menu.active {
@@ -221,91 +54,97 @@ img{
 }
 
 .usuario-menu li a {
-    color: #333;
-    padding: 8px 16px;
+    color: #333333;
+    padding: 12px 20px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    background: none;
+    border: none;
+    /*width: 100%;*/
+    text-align: left;
+    cursor: pointer;
 }
 
 .usuario-menu li a:hover {
-    background-color: #f0f0f0;
-    color: orange;
+    background-color: #F8F8F8;
+    color: #FFA500;
+    padding-left: 25px;
 }
 
-.lista-empresa{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Estilos Bootstrap adaptados */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    min-height: 70px;
 }
 
-/* Mensaje - ¡ayudenes a reducir la persida de alimentos!*/
-.mensaje-azul {
-    margin-top: 130px; 
-    background-color: #005ea8;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 18px;
+.navbar-brand img {
+    max-height: 40px;
+    width: auto;
 }
 
-.container-empresas{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+.navbar-brand span {
+    font-weight: 500;
 }
 
-.item img{
-    width: 300px;
-    height: auto;
-    display: block;
-    display: flex;
-    
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-.img-default{
-    width: 100%;
-    object-fit: cover;
+.form-control {
+    height: calc(2em + .75rem + 2px);
+    font-size: 1rem;
 }
 
-.item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.226);
-    border-radius: 5px;
+.dropdown-menu {
+    font-size: 1rem;
+    padding: 0.5rem 0;
 }
 
-.item span{
-    margin-top: 20px;
-    padding: 10px;
-    color: blueviolet;
+.dropdown-item {
+    padding: 0.5rem 1.5rem;
 }
 
-/* Estilos para el pie de página */
-.Final {
-    background-color: #005ea8; 
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
-    border-radius: 10px;
-    margin-top: 40px;
-    width: 100%;
-    box-sizing: border-box;
+/* Ajustes para la lista de empresas con Bootstrap */
+.container-empresas {
+    padding: 2rem 0;
 }
 
-.FinalPagina {
-    font-size: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
+.item {
+    transition: transform 0.3s ease;
 }
 
-.piePagina {
-    font-size: 16px;
-    margin: 0;
+.item:hover {
+    transform: translateY(-5px);
+}
+
+/* Responsive con Bootstrap manteniendo la lógica de empresas */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        max-height: 35px;
+    }
+
+    .form-control {
+        min-width: 200px !important;
+    }
+
+    .container-empresas {
+        padding: 1rem 0;
+    }
+
+    .item {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+/* Ajustes específicos para el menú de usuario/registro */
+.usuario-dropdown .dropdown-menu,
+.registro-dropdown .dropdown-menu {
+    right: 0;
+    left: auto;
+    min-width: 200px;
 }
