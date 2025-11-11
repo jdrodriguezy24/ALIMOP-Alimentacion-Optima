@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/styleProveedor/registroProveedor.css">
+    <link rel="stylesheet" href="/CSS/styleProveedor/registroProveedor.css">
     <title>Registro de Proveedor</title>
 </head>
 <body>
     <header>
         <h1>Registro de Proveedor</h1>
-        <a href="/" class="btn-volver"> Volver a Inicio</a>
+        <a href="/" class="btn-volver">Volver a Inicio</a>
     </header>
     <main>
         <section class="form-container">
-            <form class="registro-form">
+            <form class="registro-form" action="/registroProveedor" method="POST">
                 <h2>Registra tu tienda</h2>
                 <span class="form-description">Llene los siguientes campos para el registro de tu tienda</span>
                 <div class="form-group">
-                    <input type="text" id="RegEmail" name="RegEmail" placeholder="Ingresa un correo electrónico" required>
+                    <input type="text" id="Regnombre" name="Regnombre" placeholder="Ingresa el nombre del propietario" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="RegPassword" name="RegPassword" placeholder="Ingresa una contraseña" required>
+                    <input type="email" id="Regemail" name="Regemail" placeholder="Ingresa un correo electrónico" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="NombreEstablecimiento" name="NombreEstablecimiento" placeholder="Nombre del establecimiento" required>
+                    <input type="password" id="Regpassword" name="Regpassword" placeholder="Ingresa una contraseña" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="DireccionEstablecimiento" name="DireccionEstablecimiento" placeholder="Dirección del establecimiento" required>
+                    <input type="text" id="nombreEstablecimiento" name="nombreEstablecimiento" placeholder="Nombre del establecimiento" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="TelefonoEstablecimiento" name="TelefonoEstablecimiento" placeholder="Teléfono del establecimiento" required>
+                    <input type="text" id="direccionEstablecimiento" name="direccionEstablecimiento" placeholder="Dirección del establecimiento" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="telefonoEstablecimiento" name="telefonoEstablecimiento" placeholder="Teléfono del establecimiento" required>
                 </div>
                 <button type="submit" class="btn-registroProveedor">Registrar</button>
-                <p class="login-link">¿Ya tienes tu tienda registrada? <a href="../Proveedor/loginProveedor">Inicia sesión</a></p>
+                <p class="login-link">¿Ya tienes tu tienda registrada? <a href="/Proveedor/loginProveedor">Inicia sesión</a></p>
             </form>
         </section>
     </main>
@@ -40,5 +43,7 @@
         <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
         <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="/JS/Cliente/animacionRegistro.js"></script>
 </body>
 </html>

@@ -16,13 +16,13 @@
             <form class="registro-form" action="/loginProveedor" method="post">
                 <h2>Iniciar Sesión</h2>
                 <div class="form-group">
-                    <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                    <input type="email" id="Logemail" name="Logemail" placeholder="Correo Electrónico" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <input type="password" id="Logpassword" name="Logpassword" placeholder="Contraseña" required>
                 </div>
                 <button type="submit" class="btn-login">Iniciar Sesión</button>
-                <p class="login-link">¿No tienes una cuenta? <a href="../Proveedor/registroProveedor">Regístrate aquí</a></p>
+                <p class="login-link">¿No tienes una cuenta? <a href="/Proveedor/registroProveedor">Regístrate aquí</a></p>
                 <p class="login-link">¿Olvidaste tu contraseña? <a href="/recuperarContrasena.html">Recuperar contraseña</a></p>
             </form>
         </section>
@@ -31,5 +31,7 @@
         <h2 class="FinalPagina">TODOS LOS DERECHOS RESERVADOS</h2>
         <p>© 2025 ALIMOP. Todos los derechos reservados.</p>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../JS/Cliente/animacionRegistro.js"></script>
 </body>
 </html>

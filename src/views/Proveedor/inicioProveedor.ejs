@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Proveedor - ALIMOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/styleInicio.css">
+    <link rel="icon" type="image/png" href="/img/Logo/Logo.png">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand d-flex align-items-center" href="/inicioProveedor/<%= user.id %>">
+                    <img src="/img/Logo/Logo.png" alt="logo" height="40" class="me-3">
+                    <span class="fs-4 fw-bold">ALIMOP - Proveedor</span>
+                </a>
+
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Contenido del navbar -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <!-- Menú de navegación -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/inicioProveedor/<%= user.id %>"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#"><i class="fas fa-bell"></i> Notificaciones</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#"><i class="fas fa-envelope"></i> Mensajes</a></li>
+                        
+                        <!-- Dropdown de usuario -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i> <%= user.nombreUsuario %>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/perfilProveedor/<%= user.id %>"><i class="fas fa-user"></i> Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="/logoutProveedor" method="POST" class="m-0">
+                                        <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Banner bienvenida -->
+        <div class="bg-primary text-white py-4">
+            <div class="container">
+                <h1 class="h3 mb-2">Bienvenido, <%= user.nombreUsuario %></h1>
+                <p class="mb-0">Gestiona tus productos y ofertas desde aquí</p>
+            </div>
+        </div>
+
+        <!-- Dashboard principal -->
+        <section class="container my-5">
+            <div class="row g-4 mb-5">
+                <!-- Card: Ordenes pendientes -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="text-muted mb-2">Ordenes Pendientes</h6>
+                                    <h2 class="mb-0">12</h2>
+                                </div>
+                                <i class="fas fa-clipboard-list fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Ingresos este mes -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="text-muted mb-2">Ingresos Este Mes</h6>
+                                    <h2 class="mb-0">$45,230</h2>
+                                </div>
+                                <i class="fas fa-dollar-sign fa-2x text-success"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Productos activos -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="text-muted mb-2">Productos Activos</h6>
+                                    <h2 class="mb-0">28</h2>
+                                </div>
+                                <i class="fas fa-box fa-2x text-warning"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: Calificación -->
+                <div class="col-md-3">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="text-muted mb-2">Calificación</h6>
+                                    <h2 class="mb-0">4.8 ⭐</h2>
+                                </div>
+                                <i class="fas fa-star fa-2x text-info"></i>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-light border-0">
+                            <a href="#" class="text-decoration-none small">Ver reseñas →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción rápida -->
+            <div class="row g-3 mb-5">
+                <div class="col-md-6">
+                    <a href="#" class="btn btn-primary btn-lg w-100">
+                        <i class="fas fa-plus me-2"></i> Agregar Nuevo Producto
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="#" class="btn btn-outline-primary btn-lg w-100">
+                        <i class="fas fa-tag me-2"></i> Crear Oferta
+                    </a>
+                </div>
+            </div>
+
+            <!-- Separador -->
+            <div class="border-top my-5"></div>
+
+            <!-- Ordenes recientes -->
+            <h3 class="mb-4">Ordenes Recientes</h3>
+            <div class="card border-0 shadow-sm">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>ID Orden</th>
+                                <th>Cliente</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#ORD001</td>
+                                <td>Juan García</td>
+                                <td>Tomates frescos</td>
+                                <td>10 kg</td>
+                                <td><span class="badge bg-warning">Pendiente</span></td>
+                                <td>10/11/2025</td>
+                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD002</td>
+                                <td>Restaurante XYZ</td>
+                                <td>Lechuga romana</td>
+                                <td>5 kg</td>
+                                <td><span class="badge bg-success">Completado</span></td>
+                                <td>09/11/2025</td>
+                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
+                            </tr>
+                            <tr>
+                                <td>#ORD003</td>
+                                <td>Tienda Central</td>
+                                <td>Papas</td>
+                                <td>25 kg</td>
+                                <td><span class="badge bg-info">En proceso</span></td>
+                                <td>10/11/2025</td>
+                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Separador -->
+            <div class="border-top my-5"></div>
+
+            <!-- Productos con bajo stock -->
+            <h3 class="mb-4">Productos con Bajo Stock</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Tomates Cherry</h5>
+                            <p class="text-muted mb-2">Stock disponible: <strong>2 kg</strong></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-warning" style="width: 20%"></div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-warning">Reabastecer</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-warning">
+                        <div class="card-body">
+                            <h5 class="card-title">Espinacas</h5>
+                            <p class="text-muted mb-2">Stock disponible: <strong>1.5 kg</strong></p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-warning" style="width: 15%"></div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-warning">Reabastecer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4 mt-5">
+            <h2 class="h5">TODOS LOS DERECHOS RESERVADOS</h2>
+            <p class="small mb-0">ALIMOP.com S.A.S. NIT 1463718-8. Calle 85 #45-49 Piso 5, Bogotá, Colombia</p>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS y Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="../JS/inicio.js"></script>
+</body>
+</html>
