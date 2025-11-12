@@ -4,7 +4,8 @@ import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import clientesRoutes from './src/routes/Clientes.routes.js'; // Rutas de clientes
-//import proveedoresRoutes from './src/routes/Proveedores.routes.js' // Rutas de proveedores
+import proveedoresRoutes from './src/routes/Proveedores.routes.js' // Rutas de proveedores
+import apiAlimentos from './src/routes/apiAlimentos.js';
 
 // Iniciar
 const app = express();
@@ -20,9 +21,9 @@ app.set('views', path.join(__dirname, 'src/views'));
 
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Configuración de sesiones (DEBE IR ANTES DE LAS RUTAS)
 app.use(session({
@@ -64,8 +65,10 @@ app.get('/', (req, res) => {
 });
 
 // Uso de las rutas importadas
+app.use('/api', apiAlimentos);
 app.use('/', clientesRoutes);
-//app.use('/', proveedoresRoutes)
+app.use('/', proveedoresRoutes);
+
 
 
 // Iniciar servidor
