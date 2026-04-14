@@ -9,7 +9,7 @@ const verificarAutenticacion = (req, res, next) => {
     if (req.session && req.session.user) {
         next();
     } else {
-        res.redirect('/Cliente/loginCliente');
+        res.redirect('/login');
     }
 };
 
@@ -18,10 +18,6 @@ router.get('/Cliente/registroCliente', (req, res) => {
     res.render('Cliente/registroCliente');
 });
 
-// Iniciar sesión
-router.get('/Cliente/loginCliente', (req, res) => {
-    res.render('Cliente/loginCliente', { error: null, success: null });
-});
 
 // Registrar:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 router.post('/registroCliente', async (req, res) => {
@@ -44,7 +40,7 @@ router.post('/registroCliente', async (req, res) => {
         await pool.query('INSERT INTO cliente SET ?', [clienteNuevo]);
 
         // Redirigir al login con mensaje de éxito
-        return res.render('Cliente/loginCliente', {
+        return res.render('login', {
             error: null,
             success: 'Registro exitoso. Por favor, inicia sesión.'
         });
@@ -55,61 +51,12 @@ router.post('/registroCliente', async (req, res) => {
     }
 });
 
-// Iniciar sesión:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-router.post('/loginCliente', async (req, res) => {
-    try {
-        const { Logemail, Logpassword } = req.body;
-        
-        // Limpia los datos antes de la consulta
-        //const emailLimpio = Logemail.trim();
-        //const passwordBuffer = Buffer.from(Logpassword.trim());
-
-        const [usuarios] = await pool.query(
-            'SELECT idCliente, nombreUsuario, correo FROM cliente WHERE correo = ? AND contrasena = AES_ENCRYPT(?, ?)',
-            [Logemail.trim(), Logpassword.trim(), encryptionKey]
-        );
-
-        console.log('Usuario encontrado:', usuarios[0]); // Debug
-
-        if (usuarios.length > 0) {
-            const usuario = usuarios[0];
-            
-            // Guardamos el ID correcto en la sesión
-            req.session.user = {
-                id: usuario.idCliente,
-                nombreUsuario: usuario.nombreUsuario,
-                correo: usuario.Correo
-            };
-            
-            // Usar el ID directamente sin espacios o caracteres especiales
-            return res.redirect(`/inicio/${usuario.idCliente}`);
-        }
-
-        return res.render('Cliente/loginCliente', { error: 'Credenciales incorrectas' });
-
-    } catch (error) {
-        console.error('Error en login:', error);
-        return res.render('Cliente/loginCliente', { error: 'Error del servidor' });
-    }
-});
-
-// Cerrar sesión:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-router.post('/logout', (req, res) => {
-    req.session.destroy((error) => {
-        if (error) {
-            console.error('Error al cerrar sesión:', error);
-            return res.status(500).json({ message: 'Error interno del servidor al cerrar sesión' });
-        }
-        res.redirect('/');
-    });
-});
-
 // Ruta de inicio
 router.get('/inicio/:id', async (req, res) => {
     try {
         // Verifica si hay una sesión activa
         if (!req.session.user) {
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         }
 
         // Limpia el ID recibido
@@ -120,7 +67,7 @@ router.get('/inicio/:id', async (req, res) => {
         // Verifica que el ID coincida con el de la sesión
         if (req.session.user.id != userId) {
             console.log('ID no coincide con la sesión');
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         }
 
         // Obtén los datos actualizados del usuario
@@ -131,7 +78,7 @@ router.get('/inicio/:id', async (req, res) => {
 
         if (!usuario.length) {
             console.log('Usuario no encontrado en la base de datos');
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         }
 
         // Renderiza la página de inicio
@@ -142,7 +89,7 @@ router.get('/inicio/:id', async (req, res) => {
 
     } catch (error) {
         console.error('Error en la ruta de inicio:', error);
-        res.redirect('/Cliente/loginCliente');
+        res.redirect('/login');
     }
 });
 
@@ -155,7 +102,7 @@ router.get('/perfil/:id', verificarAutenticacion, async (req, res) => {
 
         // Verificar que el ID del usuario coincida con el de la sesión
         if (req.session.user.id != userId) {
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         }
 
         const[usuarios] = await pool.query(
@@ -169,12 +116,12 @@ router.get('/perfil/:id', verificarAutenticacion, async (req, res) => {
                 mensaje: mensaje // Pasamos el mensaje a la vista
             });
         } else {
-            res.redirect('/Cliente/loginCliente');
+            res.redirect('/login');
         }
 
     } catch (error) {
         console.error('Error al cargar perfil:', error);
-        res.redirect('/Cliente/loginCliente');
+        res.redirect('/login');
     }
 });
 
@@ -233,7 +180,7 @@ router.get('/perfil/:id/eliminar', verificarAutenticacion, async (req, res) => {
             console.error('ID de sesión no coincide con ID de parámetro');
             console.log('ID en sesión:', req.session.user.id);
             console.log('ID en parámetro:', id);
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         }
 
         console.log('Intentando eliminar usuario con ID:', id);
@@ -272,7 +219,7 @@ router.get('/perfil/:id/eliminar', verificarAutenticacion, async (req, res) => {
                 return res.redirect(`/perfil/${id}?mensaje=${encodeURIComponent('Error al cerrar sesión')}`);
             }
             console.log('Sesión destruida correctamente');
-            return res.redirect('/Cliente/loginCliente');
+            return res.redirect('/login');
         });
         
     } catch (error) {

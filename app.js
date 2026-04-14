@@ -1,10 +1,11 @@
-// Librerias
+// Librerías
 import express from 'express';
 import session from 'express-session';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import clientesRoutes from './src/routes/Clientes.routes.js'; // Rutas de clientes
-import proveedoresRoutes from './src/routes/Proveedores.routes.js' // Rutas de proveedores
+import proveedoresRoutes from './src/routes/Proveedores.routes.js'; // Rutas de proveedores
+import authRoutes from './src/routes/Auth.routes.js';
 import apiAlimentos from './src/routes/apiAlimentos.js';
 
 // Iniciar
@@ -18,7 +19,6 @@ const __dirname = path.dirname(__filename);
 app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
-
 
 // Middleware
 app.use(express.static('public'));
@@ -64,14 +64,16 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use('/', authRoutes);
+
 // Uso de las rutas importadas
 app.use('/api', apiAlimentos);
 app.use('/', clientesRoutes);
 app.use('/', proveedoresRoutes);
 
-
-
 // Iniciar servidor
 app.listen(app.get('port'), () => {
     console.log(`Servidor corriendo en puerto: ${app.get('port')}`);
 });
+
+export default app;

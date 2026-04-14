@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - ALIMOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/login.css">
+    <link rel="icon" type="image/png" href="./img/Logo/Logo.png">
+</head>
+<body>
+    <div class="container-fluid p-0 login-wrapper">
+        <header class="bg-light py-3 border-bottom">
+            <div class="container d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">Iniciar Sesión</h1>
+                <a href="/" class="btn btn-outline-primary">Volver a Inicio</a>
+            </div>
+        </header>
+        
+        <main class="d-flex align-items-center justify-content-center">
+            <section class="w-100">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="card shadow-sm">
+                            <div class="card-body p-5">
+                                <h2 class="card-title text-center mb-2">Bienvenido</h2>
+                                <p class="text-center text-muted mb-4 form-description">Ingresa tus credenciales para continuar</p>
+                                
+                                <form class="login-form" action="/login" method="POST">
+                                    
+                                    <% if (typeof error !== 'undefined' && error) { %>
+                                        <div class="alert alert-danger text-center" role="alert">
+                                            <%= error %>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <% if (typeof success !== 'undefined' && success) { %>
+                                        <div class="alert alert-success text-center" role="alert">
+                                            <%= success %>
+                                        </div>
+                                    <% } %>
+                                    
+                                    <div class="mb-3 form-group">
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required>
+                                    </div>
+                                    
+                                    <div class="mb-4 form-group">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="Tu contraseña" required>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 mb-3 btn-login">Iniciar Sesión</button>
+                                    
+                                    <p class="text-center mb-2">¿No tienes una cuenta? <a href="./Cliente/registroCliente" class="text-decoration-none">Registro Cliente</a></p>
+                                    <p class="text-center">¿Eres proveedor? <a href="./Proveedor/registroProveedor" class="text-decoration-none">Registro Proveedor</a></p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-dark text-white text-center py-4">
+            <h2 class="h5">TODOS LOS DERECHOS RESERVADOS</h2>
+            <p class="small mb-0">© 2025 ALIMOP. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="./JS/Cliente/animacionLogin.js"></script>
+</body>
+</html>
