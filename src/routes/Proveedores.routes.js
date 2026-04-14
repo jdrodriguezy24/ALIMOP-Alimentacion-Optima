@@ -9,18 +9,13 @@ const verificarAutenticacion = (req, res, next) => {
     if (req.session && req.session.user) {
         next();
     } else {
-        res.redirect('/Proveedor/loginProveedor');
+        res.redirect('/login');
     }
 };
 
 // Registro de proveedor
 router.get('/Proveedor/registroProveedor', async (req, res) => {
     res.render('Proveedor/registroProveedor');
-});
-
-// Iniciar Sesion
-router.get('/Proveedor/loginProveedor', (req, res) => {
-    res.render('Proveedor/loginProveedor', { error: null, success: null });
 });
 
 // Registrar Proveedor ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -52,7 +47,7 @@ router.post('/registroProveedor', async (req, res) => {
         await pool.query('INSERT INTO proveedor SET ?', [proveedorNuevo]);
 
         // Redirigir al login con mensaje de éxito
-        return res.render('Proveedor/loginProveedor', {
+        return res.render('login', {
             error: null,
             success: 'Registro exitoso. Por favor, inicia sesión.'
         });
@@ -65,58 +60,18 @@ router.post('/registroProveedor', async (req, res) => {
     }
 });
 
-// Iniciar sesión:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-router.post('/loginProveedor', async (req, res) => {
-    try {
-        const { Logemail, Logpassword } = req.body;
-
-        if(!Logemail || !Logpassword){
-            return res.render('Proveedor/loginProveedor', {
-                error: 'Todos los campos son requeridos', success: null
-            });
-        }
-
-        const [usuarios] = await pool.query(
-            'SELECT idProveedor, nombreProveedor, correo FROM proveedor WHERE correo = ? AND contrasena = AES_ENCRYPT(?, ?)',
-            [Logemail.trim(), Logpassword.trim(), encryptionKey]
-        );
-
-        console.log('Usuario encontrado:', usuarios[0]); // Debug
-
-        if (usuarios.length > 0) {
-            const usuario = usuarios[0];
-            
-            // Guardamos el ID correcto en la sesión
-            req.session.user = {
-                id: usuario.idProveedor,
-                nombreUsuario: usuario.nombreProveedor,
-                correo: usuario.correo
-            };
-            
-            // Usar el ID directamente sin espacios o caracteres especiales
-            return res.redirect(`/inicioProveedor/${usuario.idProveedor}`);
-        }
-
-        return res.render('Proveedor/loginProveedor', 
-            { error: 'Credenciales incorrectas', success: null });
-
-    } catch (error) {
-        console.error('Error en login:', error);
-        return res.render('Proveedor/loginProveedor', { error: 'Error del servidor', success: null });
-    }
-});
 
 // Página de inicio de Proveedor :::::::::::::::::::::::::::::::::::::::::::::::::::
 router.get('/inicioProveedor/:id',verificarAutenticacion, async (req, res) => {
     try {
         if(!req.session.user){
-            return res.redirect('/Proveedor/loginProveedor');
+            return res.redirect('/login');
         }
 
         const userId = req.params.id;
 
         if(req.session.user.id != userId){
-            return res.redirect('/Proveedor/loginProveedor');
+            return res.redirect('/login');
         }
 
         res.render('Proveedor/inicioProveedor', {
@@ -126,7 +81,7 @@ router.get('/inicioProveedor/:id',verificarAutenticacion, async (req, res) => {
 
     } catch (error) {
         console.log('Error en la ruta de inicio:', error);
-        res.redirect('Proveedor/loginProveedor');
+        res.redirect('/login');
     }
 })
 
@@ -136,7 +91,7 @@ router.get('perfilProveedor/:id', verificarAutenticacion, async (req, res) => {
         const userId = req.params.id;
 
         if(req.session.user.id != userId){
-            return res.redirect('/Proveedor/loginProveedor');
+            return res.redirect('/login');
         }
 
         const [usuarios] = await pool.query(
@@ -149,11 +104,11 @@ router.get('perfilProveedor/:id', verificarAutenticacion, async (req, res) => {
                 error: null
             });
         } else{
-            res.redirect('/Proveedor/loginProveedor');
+            res.redirect('/login');
         }
     } catch (error) {
         console.error('Error al cargar el perfil: ', error);
-        res.redirect('/Proveedor/loginProveedor');
+        res.redirect('/login');
     }
 })
 
