@@ -52,7 +52,7 @@ router.post('/login', async (req, res) => {
                 tipo: 'Proveedor' // identificador del tipo
             };
             console.log('Proveedor autenticado: ', usuario.idProveedor);
-            return res.redirect(`/inicioProveedor/${usuario.idProveedor}`);
+            return res.redirect(`/inicio/${usuario.idProveedor}`);
         }
 
         // Si no existe en ninguna tabla
