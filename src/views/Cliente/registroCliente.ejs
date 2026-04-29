@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - ALIMOP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../CSS/styleCliente/registro.css">
+    <link rel="icon" type="image/png" href="./img/Logo/Logo.png">
 </head>
 <body>
     <div class="container-fluid p-0 registro-wrapper">
@@ -27,15 +29,23 @@
                                 
                                 <form class="registro-form" action="/registroCliente" method="post">
                                     <div class="mb-3 form-group">
+                                        <label for="Regnombre" class="form-label">Nombre de Usuario</label>
                                         <input type="text" id="Regnombre" name="Regnombre" class="form-control" placeholder="Ingresa un nombre de usuario" required>
                                     </div>
                                     
                                     <div class="mb-3 form-group">
+                                        <label for="Regemail" class="form-label">Correo Electrónico</label>
                                         <input type="email" id="Regemail" name="Regemail" class="form-control" placeholder="Ingrese su correo" required>
                                     </div>
                                     
                                     <div class="mb-4 form-group">
+                                        <label for="Regpassword" class="form-label">Contraseña</label>
                                         <input type="password" id="Regpassword" name="Regpassword" class="form-control" placeholder="Ingrese su contraseña" required>
+                                        <div class="input-group">
+                                            <button type="button" class="btn btn-outline-secondary toggle-password" data-target="Regpassword">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                     
                                     <button type="submit" class="btn btn-primary w-100 mb-3 btn-registro">Registrarse</button>
@@ -59,5 +69,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="../JS/Cliente/animacionRegistro.js"></script>
+    <script src="/JS/script.js"></script>
 </body>
 </html>

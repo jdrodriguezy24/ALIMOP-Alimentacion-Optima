@@ -1,12 +1,15 @@
 // Librerías
 import express from 'express';
 import session from 'express-session';
+import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import clientesRoutes from './src/routes/Clientes.routes.js'; // Rutas de clientes
 import proveedoresRoutes from './src/routes/Proveedores.routes.js'; // Rutas de proveedores
 import authRoutes from './src/routes/Auth.routes.js';
 import apiAlimentos from './src/routes/apiAlimentos.js';
+
+dotenv.config();
 
 // Iniciar
 const app = express();

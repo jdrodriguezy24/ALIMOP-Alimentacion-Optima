@@ -51,7 +51,7 @@ router.post('/registroCliente', async (req, res) => {
     }
 });
 
-// Ruta de inicio
+// Ruta de inicio - Unificada para Cliente y Proveedor
 router.get('/inicio/:id', async (req, res) => {
     try {
         // Verifica si hay una sesión activa
@@ -70,19 +70,33 @@ router.get('/inicio/:id', async (req, res) => {
             return res.redirect('/login');
         }
 
-        // Obtén los datos actualizados del usuario
-        const [usuario] = await pool.query(
-            'SELECT idCliente, nombreUsuario, correo FROM cliente WHERE idCliente = ?',
-            [userId]
-        );
+        // Si es un cliente, obtén los datos del cliente
+        if (req.session.user.tipo === 'Cliente') {
+            const [usuario] = await pool.query(
+                'SELECT idCliente, nombreUsuario, correo FROM cliente WHERE idCliente = ?',
+                [userId]
+            );
 
-        if (!usuario.length) {
-            console.log('Usuario no encontrado en la base de datos');
-            return res.redirect('/login');
+            if (!usuario.length) {
+                console.log('Usuario cliente no encontrado en la base de datos');
+                return res.redirect('/login');
+            }
+        }
+        // Si es un proveedor, obtén los datos del proveedor
+        else if (req.session.user.tipo === 'Proveedor') {
+            const [usuario] = await pool.query(
+                'SELECT idProveedor, nombreProveedor, correo FROM proveedor WHERE idProveedor = ?',
+                [userId]
+            );
+
+            if (!usuario.length) {
+                console.log('Usuario proveedor no encontrado en la base de datos');
+                return res.redirect('/login');
+            }
         }
 
-        // Renderiza la página de inicio
-        res.render('Cliente/inicio', {
+        // Renderiza la página de inicio (la misma para ambos)
+        res.render('inicio', {
             user: req.session.user,
             error: null
         });
@@ -228,17 +242,17 @@ router.get('/perfil/:id/eliminar', verificarAutenticacion, async (req, res) => {
     }
 });
 
-// Ruta para listaEmpresas::::::::::::::::::::::::::::::::::::::::::::::::::::::
-router.get('/listaEmpresas', async (req, res) => {
+// Ruta para Restaurantes::::::::::::::::::::::::::::::::::::::::::::::::::::::
+router.get('/Restaurantes', async (req, res) => {
     try {
         const SesionActiva = req.session && req.session.user;
 
-        res.render('listaEmpresas', {
+        res.render('Restaurantes', {
             user: SesionActiva ? req.session.user : null,
             SesionActiva: SesionActiva
         });
     } catch (error) {
-        console.error('Error al cargar lista de empresas:', error);
+        console.error('Error al cargar los restaurantes:', error);
         res.status(500).send('Error al cargar la página');
     }
 });

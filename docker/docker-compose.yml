@@ -3,14 +3,14 @@ services:
     build: 
       context: ..
       dockerfile: docker/Dockerfile
+    image: alimop-app-image
     container_name: alimop-app
     ports:
       - "8080:8080"
+    env_file:
+      - ../.env
     environment:
-      - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=admins25
-      - DB_DATABASE=alimop
+      - NODE_ENV=production
     depends_on:
       db:
         condition: service_healthy
@@ -21,9 +21,11 @@ services:
   db:
     image: mysql:8.0
     container_name: alimop-db
+    env_file:
+      - ../.env
     environment:
-      - MYSQL_ROOT_PASSWORD=admins25
-      - MYSQL_DATABASE=alimop
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
     ports:
       - "3307:3306"
     volumes:
