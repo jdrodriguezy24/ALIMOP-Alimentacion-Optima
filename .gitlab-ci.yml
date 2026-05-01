@@ -11,7 +11,7 @@ build:
   stage: build
   image: ${IMAGE_REGISTRY}
   script:
-    - npm install
+    - npm ci
     - echo "Build completado para proyecto ALIMOP"
   cache:
     paths:
@@ -19,6 +19,7 @@ build:
   artifacts:
     paths:
       - node_modules/
+    expire_in: 1 hour
   only:
     - branches
     - merge_requests
@@ -26,11 +27,13 @@ build:
 test_unit:
   stage: test
   image: ${IMAGE_REGISTRY}
-  needs:
-    - build
   script:
-    - npm install
+    - npm ci
     - npm run test:unit
+  cache:
+    paths:
+      - node_modules/
+    policy: pull
   coverage: '/Coverage: \d+\.\d+%/'
   allow_failure: false
   only:
@@ -40,11 +43,13 @@ test_unit:
 test_integration:
   stage: test
   image: ${IMAGE_REGISTRY}
-  needs:
-    - build
   script:
-    - npm install
+    - npm ci
     - npm run test:integration
+  cache:
+    paths:
+      - node_modules/
+    policy: pull
   allow_failure: true
   only:
     - branches
@@ -53,11 +58,13 @@ test_integration:
 test_e2e:
   stage: test
   image: ${IMAGE_REGISTRY}
-  needs:
-    - build
   script:
-    - npm install
+    - npm ci
     - npm run test:e2e
+  cache:
+    paths:
+      - node_modules/
+    policy: pull
   allow_failure: true
   only:
     - branches
@@ -68,15 +75,12 @@ deploy_development:
   image: docker:latest
   services:
     - docker:dind
-  needs:
-    - test_unit
-    - test_integration
   script:
     - docker build -t alimop:dev .
     - echo "Deploy en desarrollo completado"
   environment:
     name: development
-    url: https://gitlab.com/jdrodriguezy24/ALIMOP-Alimentacion-Optima
+    url: https://desarrollo.alimop.local
   only:
     - develop
   when: on_success
@@ -86,14 +90,12 @@ deploy_production:
   image: docker:latest
   services:
     - docker:dind
-  needs:
-    - test_unit
   script:
     - docker build -t alimop:latest .
     - echo "Deploy en producción completado"
   environment:
     name: production
-    url: https://gitlab.com/jdrodriguezy24/ALIMOP-Alimentacion-Optima
+    url: https://alimop.com
   only:
     - main
     - master
