@@ -100,7 +100,7 @@ describe('Pruebas de Integración - ALIMOP', () => {
                 password: 'CCV-2941'
             };
             const estadoEsperado = 302; // Redirect
-            const rutaEsperada = '/inicioProveedor/1';
+            const rutaEsperada = '/inicio/1';
             console.log(`  • Credenciales válidas: ${proveedorCredenciales.email}`);
             console.log(`  • Contraseña: ${proveedorCredenciales.password}`);
             console.log(`  • Status esperado: ${estadoEsperado}`);

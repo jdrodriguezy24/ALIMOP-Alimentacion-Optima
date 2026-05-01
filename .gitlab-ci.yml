@@ -13,10 +13,6 @@ build:
   script:
     - npm ci
     - echo "Build completado para proyecto ALIMOP"
-  artifacts:
-    paths:
-      - node_modules/
-    expire_in: 1 hour
   cache:
     paths:
       - node_modules/
@@ -27,10 +23,12 @@ build:
 test_unit:
   stage: test
   image: ${IMAGE_REGISTRY}
-  dependencies:
-    - build
   script:
+    - npm ci
     - npm run test:unit
+  cache:
+    paths:
+      - node_modules/
   coverage: '/Coverage: \d+\.\d+%/'
   allow_failure: false
   only:
@@ -40,10 +38,12 @@ test_unit:
 test_integration:
   stage: test
   image: ${IMAGE_REGISTRY}
-  dependencies:
-    - build
   script:
+    - npm ci
     - npm run test:integration
+  cache:
+    paths:
+      - node_modules/
   allow_failure: true
   only:
     - branches
@@ -52,10 +52,12 @@ test_integration:
 test_e2e:
   stage: test
   image: ${IMAGE_REGISTRY}
-  dependencies:
-    - build
   script:
+    - npm ci
     - npm run test:e2e
+  cache:
+    paths:
+      - node_modules/
   allow_failure: true
   only:
     - branches
