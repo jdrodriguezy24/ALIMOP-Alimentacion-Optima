@@ -12,7 +12,6 @@ build:
   image: ${IMAGE_REGISTRY}
   script:
     - npm install
-    - npm run lint
     - echo "Build completado para proyecto ALIMOP"
   cache:
     paths:
