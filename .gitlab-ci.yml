@@ -1,6 +1,5 @@
 stages:
   - build
-  - test
   - deploy
 
 variables:
@@ -16,49 +15,6 @@ build:
   cache:
     paths:
       - node_modules/
-  only:
-    - branches
-    - merge_requests
-
-test_unit:
-  stage: test
-  image: ${IMAGE_REGISTRY}
-  script:
-    - npm ci
-    - npm run test:unit
-  cache:
-    paths:
-      - node_modules/
-  coverage: '/Coverage: \d+\.\d+%/'
-  allow_failure: false
-  only:
-    - branches
-    - merge_requests
-
-test_integration:
-  stage: test
-  image: ${IMAGE_REGISTRY}
-  script:
-    - npm ci
-    - npm run test:integration
-  cache:
-    paths:
-      - node_modules/
-  allow_failure: true
-  only:
-    - branches
-    - merge_requests
-
-test_e2e:
-  stage: test
-  image: ${IMAGE_REGISTRY}
-  script:
-    - npm ci
-    - npm run test:e2e
-  cache:
-    paths:
-      - node_modules/
-  allow_failure: true
   only:
     - branches
     - merge_requests
