@@ -1,0 +1,101 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  NODE_ENV: production
+  IMAGE_REGISTRY: node:24
+
+build:
+  stage: build
+  image: ${IMAGE_REGISTRY}
+  script:
+    - npm install
+    - npm run lint
+    - echo "Build completado para proyecto ALIMOP"
+  cache:
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+  only:
+    - branches
+    - merge_requests
+
+test_unit:
+  stage: test
+  image: ${IMAGE_REGISTRY}
+  needs:
+    - build
+  script:
+    - npm install
+    - npm run test:unit
+  coverage: '/Coverage: \d+\.\d+%/'
+  allow_failure: false
+  only:
+    - branches
+    - merge_requests
+
+test_integration:
+  stage: test
+  image: ${IMAGE_REGISTRY}
+  needs:
+    - build
+  script:
+    - npm install
+    - npm run test:integration
+  allow_failure: true
+  only:
+    - branches
+    - merge_requests
+
+test_e2e:
+  stage: test
+  image: ${IMAGE_REGISTRY}
+  needs:
+    - build
+  script:
+    - npm install
+    - npm run test:e2e
+  allow_failure: true
+  only:
+    - branches
+    - merge_requests
+
+deploy_development:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  needs:
+    - test_unit
+    - test_integration
+  script:
+    - docker build -t alimop:dev .
+    - echo "Deploy en desarrollo completado"
+  environment:
+    name: development
+    url: https://gitlab.com/jdrodriguezy24/ALIMOP-Alimentacion-Optima
+  only:
+    - develop
+  when: on_success
+
+deploy_production:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  needs:
+    - test_unit
+  script:
+    - docker build -t alimop:latest .
+    - echo "Deploy en producción completado"
+  environment:
+    name: production
+    url: https://gitlab.com/jdrodriguezy24/ALIMOP-Alimentacion-Optima
+  only:
+    - main
+    - master
+  when: manual
