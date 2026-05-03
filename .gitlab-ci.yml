@@ -12,6 +12,10 @@ build:
   script:
     - npm ci
     - echo "Build completado para proyecto ALIMOP"
+  artifacts:
+    paths:
+      - node_modules/
+  expire_in: 1 hour
   cache:
     paths:
       - node_modules/
