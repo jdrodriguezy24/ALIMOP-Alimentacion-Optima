@@ -29,9 +29,9 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <!-- Menú de navegación -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/inicio/<%= user.id %>"><i class="fas fa-home"></i> Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#"><i class="fas fa-bell"></i> Notificaciones</a></li>
-                        <li class="nav-item"><a class="nav-link px-3 py-2" href="#"><i class="fas fa-envelope"></i> Mensajes</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/inicioProveedor/<%= user.id %>"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/notificaciones/<%= user.id %>"><i class="fas fa-bell"></i> Notificaciones</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/mensajes/<%= user.id %>"><i class="fas fa-envelope"></i> Mensajes</a></li>
                         
                         <!-- Dropdown de usuario -->
                         <li class="nav-item dropdown">
@@ -71,14 +71,14 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
-                                    <h6 class="text-muted mb-2">Ordenes Pendientes</h6>
-                                    <h2 class="mb-0">12</h2>
+                                    <h6 class="text-muted mb-2">Ordenes Recientes</h6>
+                                    <h2 class="mb-0"><%= ordenesPendientes %></h2>
                                 </div>
                                 <i class="fas fa-clipboard-list fa-2x text-primary"></i>
                             </div>
                         </div>
                         <div class="card-footer bg-light border-0">
-                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                            <a href="/misOrdenes/<%= user.id %>" class="text-decoration-none small">Ver detalles →</a>
                         </div>
                     </div>
                 </div>
@@ -90,13 +90,13 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="text-muted mb-2">Ingresos Este Mes</h6>
-                                    <h2 class="mb-0">$45,230</h2>
+                                    <h2 class="mb-0">$<%= ingresosTotal ? parseFloat(ingresosTotal).toLocaleString('es-CO') : '0' %></h2>
                                 </div>
                                 <i class="fas fa-dollar-sign fa-2x text-success"></i>
                             </div>
                         </div>
                         <div class="card-footer bg-light border-0">
-                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                            <a href="/misIngresos/<%= user.id %>" class="text-decoration-none small">Ver detalles →</a>
                         </div>
                     </div>
                 </div>
@@ -108,13 +108,13 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="text-muted mb-2">Productos Activos</h6>
-                                    <h2 class="mb-0">28</h2>
+                                    <h2 class="mb-0"><%= productosActivos %></h2>
                                 </div>
                                 <i class="fas fa-box fa-2x text-warning"></i>
                             </div>
                         </div>
                         <div class="card-footer bg-light border-0">
-                            <a href="#" class="text-decoration-none small">Ver detalles →</a>
+                            <a href="/misProductos/<%= user.id %>" class="text-decoration-none small">Ver detalles →</a>
                         </div>
                     </div>
                 </div>
@@ -126,13 +126,14 @@
                             <div class="d-flex justify-content-between align-items-start">
                                 <div>
                                     <h6 class="text-muted mb-2">Calificación</h6>
-                                    <h2 class="mb-0">4.8 ⭐</h2>
+                                    <h2 class="mb-0"><%= calificacionPromedio %> <% if (calificacionPromedio > 0) { %>⭐<% } %></h2>
+                                    <small class="text-muted">(<%= totalCalificaciones %> calificaciones)</small>
                                 </div>
                                 <i class="fas fa-star fa-2x text-info"></i>
                             </div>
                         </div>
                         <div class="card-footer bg-light border-0">
-                            <a href="#" class="text-decoration-none small">Ver reseñas →</a>
+                            <a href="/misResenas/<%= user.id %>" class="text-decoration-none small">Ver reseñas →</a>
                         </div>
                     </div>
                 </div>
@@ -141,12 +142,12 @@
             <!-- Botones de acción rápida -->
             <div class="row g-3 mb-5">
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-primary btn-lg w-100">
+                    <a href="/agregarProducto/<%= user.id %>" class="btn btn-primary btn-lg w-100">
                         <i class="fas fa-plus me-2"></i> Agregar Nuevo Producto
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#" class="btn btn-outline-primary btn-lg w-100">
+                    <a href="/crearOferta/<%= user.id %>" class="btn btn-outline-primary btn-lg w-100">
                         <i class="fas fa-tag me-2"></i> Crear Oferta
                     </a>
                 </div>
@@ -166,39 +167,29 @@
                                 <th>Cliente</th>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
-                                <th>Estado</th>
+                                <th>Total</th>
                                 <th>Fecha</th>
                                 <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>#ORD001</td>
-                                <td>Juan García</td>
-                                <td>Tomates frescos</td>
-                                <td>10 kg</td>
-                                <td><span class="badge bg-warning">Pendiente</span></td>
-                                <td>10/11/2025</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>#ORD002</td>
-                                <td>Restaurante XYZ</td>
-                                <td>Lechuga romana</td>
-                                <td>5 kg</td>
-                                <td><span class="badge bg-success">Completado</span></td>
-                                <td>09/11/2025</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
-                            </tr>
-                            <tr>
-                                <td>#ORD003</td>
-                                <td>Tienda Central</td>
-                                <td>Papas</td>
-                                <td>25 kg</td>
-                                <td><span class="badge bg-info">En proceso</span></td>
-                                <td>10/11/2025</td>
-                                <td><a href="#" class="btn btn-sm btn-outline-primary">Ver</a></td>
-                            </tr>
+                            <% if (ordenesRecientes && ordenesRecientes.length > 0) { %>
+                                <% ordenesRecientes.forEach((orden) => { %>
+                                    <tr>
+                                        <td>#ORD<%= orden.idFacturaVenta %></td>
+                                        <td><%= orden.nombreUsuario %></td>
+                                        <td><%= orden.nombre %></td>
+                                        <td><%= orden.cantidad %></td>
+                                        <td>$<%= parseFloat(orden.ValorTotal).toLocaleString('es-CO') %></td>
+                                        <td><%= orden.Fecha %></td>
+                                        <td><a href="/detalleOrden/<%= orden.idFacturaVenta %>/<%= user.id %>" class="btn btn-sm btn-outline-primary">Ver</a></td>
+                                    </tr>
+                                <% }); %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="7" class="text-center text-muted py-4">No hay órdenes recientes</td>
+                                </tr>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -209,32 +200,32 @@
 
             <!-- Productos con bajo stock -->
             <h3 class="mb-4">Productos con Bajo Stock</h3>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card border-warning">
-                        <div class="card-body">
-                            <h5 class="card-title">Tomates Cherry</h5>
-                            <p class="text-muted mb-2">Stock disponible: <strong>2 kg</strong></p>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-warning" style="width: 20%"></div>
+            <% if (bajoStock && bajoStock.length > 0) { %>
+                <div class="row g-4">
+                    <% bajoStock.forEach((producto) => { 
+                        let porcentaje = Math.min((producto.cantidad / 10) * 100, 100);
+                        let porcentajeRedondeado = Math.round(porcentaje);
+                    %>
+                        <div class="col-md-6">
+                            <div class="card border-warning">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= producto.nombre %></h5>
+                                    <p class="text-muted mb-2">Stock disponible: <strong><%= producto.cantidad %> unidades</strong></p>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-warning" style="width: <%= porcentajeRedondeado + '%' %>"></div>
+                                    </div>
+                                    <a href="/reabastecer/<%= producto.idAlimento %>/<%= user.id %>" class="btn btn-sm btn-warning">Reabastecer</a>
+                                </div>
                             </div>
-                            <a href="#" class="btn btn-sm btn-warning">Reabastecer</a>
                         </div>
-                    </div>
+                    <% }); %>
                 </div>
-                <div class="col-md-6">
-                    <div class="card border-warning">
-                        <div class="card-body">
-                            <h5 class="card-title">Espinacas</h5>
-                            <p class="text-muted mb-2">Stock disponible: <strong>1.5 kg</strong></p>
-                            <div class="progress mb-3">
-                                <div class="progress-bar bg-warning" style="width: 15%"></div>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-warning">Reabastecer</a>
-                        </div>
-                    </div>
+            <% } else { %>
+                <div class="alert alert-success" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>
+                    Todos tus productos tienen stock suficiente
                 </div>
-            </div>
+            <% } %>
         </section>
 
         <!-- Footer -->
