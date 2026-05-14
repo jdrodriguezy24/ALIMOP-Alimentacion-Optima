@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto - ALIMOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="/img/Logo/Logo.png">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="/inicioProveedor/<%= user.id %>">
+                    <img src="/img/Logo/Logo.png" alt="logo" height="40" class="me-3">
+                    <span class="fs-4 fw-bold">ALIMOP</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/inicioProveedor/<%= user.id %>"><i class="fas fa-home"></i> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link px-3 py-2" href="/perfilProveedor/<%= user.id %>"><i class="fas fa-user"></i> Perfil</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="mb-4">Agregar Nuevo Producto</h1>
+
+                    <% if (error) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i><%= error %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+
+                    <form action="/agregarProducto/<%= user.id %>" method="POST" class="card border-0 shadow">
+                        <div class="card-body p-4">
+                            <div class="mb-3">
+                                <label for="tipoAlimento" class="form-label">Tipo de Alimento *</label>
+                                <select class="form-select" id="tipoAlimento" name="tipoAlimento" required>
+                                    <option value="">-- Selecciona un tipo --</option>
+                                    <option value="Proteina">Proteína</option>
+                                    <option value="Verdura">Verdura</option>
+                                    <option value="Fruta">Fruta</option>
+                                    <option value="Grano">Grano</option>
+                                    <option value="Enlatado">Enlatado</option>
+                                    <option value="Lacteo">Lácteo</option>
+                                    <option value="Bebida">Bebida</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre del Producto *</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="ValorUnidad" class="form-label">Precio Unitario (COP) *</label>
+                                        <input type="number" class="form-control" id="ValorUnidad" name="ValorUnidad" step="0.01" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="cantidad" class="form-label">Cantidad *</label>
+                                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fechaProduccion" class="form-label">Fecha de Producción</label>
+                                        <input type="date" class="form-control" id="fechaProduccion" name="fechaProduccion">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fechaVencimiento" class="form-label">Fecha de Vencimiento *</label>
+                                        <input type="date" class="form-control" id="fechaVencimiento" name="fechaVencimiento" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Clasificación del Alimento - Campos Separados -->
+                            <div class="mb-4">
+                                <h5 class="mb-3">Clasificación del Alimento *</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="ClaseAlimento" class="form-label">Clase</label>
+                                            <select class="form-select" id="ClaseAlimento" name="ClaseAlimento" required>
+                                                <option value="">-- Selecciona --</option>
+                                                <% clases.forEach(c => { %>
+                                                    <option value="<%= c.ClaseAlimento %>"><%= c.ClaseAlimento %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="Nivel" class="form-label">Nivel</label>
+                                            <select class="form-select" id="Nivel" name="Nivel" required>
+                                                <option value="">-- Selecciona --</option>
+                                                <% niveles.forEach(n => { %>
+                                                    <option value="<%= n.Nivel %>"><%= n.Nivel %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="Manipulacion" class="form-label">Manipulación</label>
+                                            <select class="form-select" id="Manipulacion" name="Manipulacion" required>
+                                                <option value="">-- Selecciona --</option>
+                                                <% manipulaciones.forEach(m => { %>
+                                                    <option value="<%= m.Manipulacion %>"><%= m.Manipulacion %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="TipoManipulacion" class="form-label">Tipo de Manipulación</label>
+                                            <select class="form-select" id="TipoManipulacion" name="TipoManipulacion" required>
+                                                <option value="">-- Selecciona --</option>
+                                                <% tiposManipulacion.forEach(t => { %>
+                                                    <option value="<%= t.TipoManipulacion %>"><%= t.TipoManipulacion %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="mb-3">
+                                            <label for="Conservacion" class="form-label">Conservación</label>
+                                            <select class="form-select" id="Conservacion" name="Conservacion" required>
+                                                <option value="">-- Selecciona --</option>
+                                                <% conservaciones.forEach(c => { %>
+                                                    <option value="<%= c.Conservacion %>"><%= c.Conservacion %></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 d-sm-flex justify-content-sm-end">
+                                <a href="/inicioProveedor/<%= user.id %>" class="btn btn-outline-secondary">Cancelar</a>
+                                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4 mt-5">
+            <p class="small mb-0">ALIMOP.com S.A.S. © 2024. Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
