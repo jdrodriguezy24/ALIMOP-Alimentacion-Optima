@@ -338,8 +338,8 @@ router.get('/perfilProveedor/:id/eliminar', verificarAutenticacion, async (req, 
 
 // Agregar Nuevo Producto :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 router.get('/agregarProducto/:id', verificarAutenticacion, async (req, res) => {
+    const userId = req.params.id;
     try {
-        const userId = req.params.id;
         if (req.session.user.id != userId) {
             return res.redirect('/login');
         }
